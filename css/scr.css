@@ -1,0 +1,62 @@
+body {
+  min-height: 100%;         
+  height: auto !important;
+  margin: 0;            
+  overflow: hidden;
+}
+.column { position: absolute; float: left; }
+
+#panel3 { 
+  background: #000 url(../mapa-2.png) 0 0;
+  border-left: 1px solid black;
+  height: 1080px;
+  width: 1920px;
+  left: 1920px;
+  border-left: 1px solid black;
+
+}
+
+#panel1 {
+  padding: 0;
+  left: 0;
+  background: #000 url(../mapa-1.png) 0 0;
+  height: 1080px;
+  width: 1920px;
+}
+#panel2 {
+  padding: 0;
+  left: 1920px;
+  background: #000 url(../mapa-2.png) 0 0;
+  height: 1080px;
+  width: 1920px;
+  border-left: 1px solid black;
+
+}
+.panelHandle {
+  height: 1080px;
+  width: 10px;
+  background: -moz-linear-gradient(left, rgba(100, 100, 100, 1), rgba(255, 255, 255, 0));
+  position: relative;
+  left: 0;
+}
+
+#panel4 { 
+  left: 1920px;
+  padding: 50px 30px; /* RC padding */ 
+  background-color: #00aeef;
+  height: 1080px;
+  border-left: 1px solid black;
+}
+
+#panel4 img {
+    float: right;
+    padding-top: 20px;
+    padding-right: 70px;
+}
+
+#mus-txt-content {
+    clear: both;
+    padding-top: 40px;
+    width: 200px;
+}
+

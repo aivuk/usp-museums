@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/scr.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function openPanel(num) {
+            if (num == 2) {
+                $('#panel1').animate({'width': '960px'});
+                $('#panel2').animate({'left': '960px'});
+                $('#panel3').animate({'left': '1920px'});
+                $('#panel4').animate({'left': '1920px'});
+            } else if (num == 3) {
+                $('#panel1').animate({'width': '640px'});
+                $('#panel2').animate({'left': '640px'});
+                $('#panel3').animate({'left': '1280px'});
+                $('#panel4').animate({'left': '1920px'});
+            } else if (num == 4) {
+                $('#panel1').animate({'width': '480px'});
+                $('#panel2').animate({'left': '480px'});
+                $('#panel3').animate({'left': '960px'});
+                $('#panel4').animate({'left': '1440px'});
+            }
+
+        }
+
+        $("#op2").click(function(){openPanel(2);});
+        $("#op3").click(function(){openPanel(3);});
+        $("#op4").click(function(){openPanel(4);});
+
+        $("#p2-handle").mousedown(function (data) {
+            $("body").mousemove(function (data) {
+                var panel3Left = $("#panel3").css("left");
+                var p3Left = parseInt(panel3Left.slice(0, panel3Left.length - 2));
+                if (data.clientX < p3Left - 30) {
+                    $("#panel1").css({'width': data.clientX});
+                    $("#panel2").css({'left': data.clientX});
+                }
+            }).mouseup(function () {
+                $("body").off("mousemove");
+            });
+        });
+
+        $("#p3-handle").mousedown(function (data) {
+            $("body").mousemove(function (data) {
+                var panel2Left = $("#panel2").css("left");
+                var p2Left = parseInt(panel2Left.slice(0, panel2Left.length - 2));
+
+                var panel4Left = $("#panel4").css("left");
+                var p4Left = parseInt(panel4Left.slice(0, panel4Left.length - 2));
+
+                if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
+                    $("#panel3").css({'left': data.clientX});
+                }
+            }).mouseup(function () {
+                $("body").off("mousemove");
+            });
+        });
+ 
+    });
+</script>
+</head>
+<body>
+
+<div id="panel1" class="column">
+    <span id="op2" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+</div>
+
+<div id="panel2" class="column">
+    <div id="p2-handle" class="panelHandle"></div>
+    <span id="op3" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+</div>
+
+<div id="panel3" class="column">
+    <div id="p3-handle" class="panelHandle"></div>
+    <span id="op4" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+</div>
+
+<div id="panel4" class="column">
+    <img src="./MAC-1.JPG">
+    <br/>
+    <img src="./MAC-2.jpg">
+    <br/>
+    <div id="mus-txt-content">
+    <b><span id="hu">MAC USP</span></b>
+    <p>
+    O Museu de Arte Contemporânea da Universidade de São Paulo, que completa 50 anos neste ano de 2013, tem sua origem na transferência para a Universidade de São Paulo das coleções que formavam o antigo Museu de Arte Moderna de São Paulo.
+    </div>
+</div>
+</body>
+</html>
