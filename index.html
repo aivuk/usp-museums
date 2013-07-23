@@ -9,17 +9,14 @@
     $(function () {
         function openPanel(num) {
             if (num == 2) {
-                $('#panel1').animate({'width': '960px'});
                 $('#panel2').animate({'left': '960px'});
                 $('#panel3').animate({'left': '1920px'});
                 $('#panel4').animate({'left': '1920px'});
             } else if (num == 3) {
-                $('#panel1').animate({'width': '640px'});
                 $('#panel2').animate({'left': '640px'});
                 $('#panel3').animate({'left': '1280px'});
                 $('#panel4').animate({'left': '1920px'});
             } else if (num == 4) {
-                $('#panel1').animate({'width': '480px'});
                 $('#panel2').animate({'left': '480px'});
                 $('#panel3').animate({'left': '960px'});
                 $('#panel4').animate({'left': '1440px'});
@@ -31,12 +28,17 @@
         $("#op3").click(function(){openPanel(3);});
         $("#op4").click(function(){openPanel(4);});
 
+        getLeft = function (num) {
+            var panelLeft = $("#panel" + String(num)).css("left");
+            var left = parseInt(panelLeft.slice(0, panelLeft.length - 2));
+
+            return left;
+        }
+
         $("#p2-handle").mousedown(function (data) {
             $("body").mousemove(function (data) {
-                var panel3Left = $("#panel3").css("left");
-                var p3Left = parseInt(panel3Left.slice(0, panel3Left.length - 2));
-                if (data.clientX < p3Left - 30) {
-                    $("#panel1").css({'width': data.clientX});
+                var p3Left = getLeft(3);
+                if (data.clientX < p3Left - 30 && data.clientX > 30) {
                     $("#panel2").css({'left': data.clientX});
                 }
             }).mouseup(function () {
@@ -46,11 +48,8 @@
 
         $("#p3-handle").mousedown(function (data) {
             $("body").mousemove(function (data) {
-                var panel2Left = $("#panel2").css("left");
-                var p2Left = parseInt(panel2Left.slice(0, panel2Left.length - 2));
-
-                var panel4Left = $("#panel4").css("left");
-                var p4Left = parseInt(panel4Left.slice(0, panel4Left.length - 2));
+                var p2Left = getLeft(2);
+                var p4Left = getLeft(4);
 
                 if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
                     $("#panel3").css({'left': data.clientX});
@@ -66,17 +65,17 @@
 <body>
 
 <div id="panel1" class="column">
-    <span id="op2" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+    <span id="op2" class="mapLabel" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
 </div>
 
 <div id="panel2" class="column">
     <div id="p2-handle" class="panelHandle"></div>
-    <span id="op3" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+    <span id="op3" class="mapLabel" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
 </div>
 
 <div id="panel3" class="column">
     <div id="p3-handle" class="panelHandle"></div>
-    <span id="op4" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
+    <span id="op4" class="mapLabel" style="position: absolute; left: 40px; top: 400px;">Abre próximo nível</span>
 </div>
 
 <div id="panel4" class="column">

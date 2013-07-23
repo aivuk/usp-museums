@@ -3,8 +3,23 @@ body {
   height: auto !important;
   margin: 0;            
   overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.column { position: absolute; float: left; }
+.column { 
+  position: absolute; 
+  float: left;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 #panel3 { 
   background: #000 url(../mapa-2.png) 0 0;
@@ -36,6 +51,7 @@ body {
   height: 1080px;
   width: 10px;
   background: -moz-linear-gradient(left, rgba(100, 100, 100, 1), rgba(255, 255, 255, 0));
+  background: -webkit-linear-gradient(left, rgba(100, 100, 100, 1), rgba(255, 255, 255, 0));
   position: relative;
   left: 0;
 }
@@ -58,5 +74,11 @@ body {
     clear: both;
     padding-top: 40px;
     width: 200px;
+}
+
+.mapLabel {
+    background: black;
+    color: white;
+    padding: 5px;
 }
 
