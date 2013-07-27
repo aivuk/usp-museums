@@ -1,0 +1,41 @@
+n,escala,grupo,nome,name,adress,city,country,x en,y en,en,x pt,y pt,pt
+2,1,museu,Centro de Divulgação Científica e Cultural,Centre for Scientific and Cultural Dissemination,"Rua Nove de Julho, 1227",São Carlos,Brasil,730,360,tr,720,360,tl
+15,1,museu,"Museu e Centro de Ciências, Educação e Artes Luiz de Queiroz","The Luiz de Queiroz Museum and Center for Sciences, Education and Arts","Av. Padua Dias, 11",Piracicaba,Brasil,790,590,bl,780,570,tl
+18,1,museu,Museu Republicano,Museum of the Republic,"Rua Barão de Itaim, 67",Itu,Brasil,900,770,tl,900,770,bl
+20,1,mapa,São Paulo,São Paulo,São Paulo,São Paulo,Brasil,,,,,,
+26,1,bem,Engenho São Jorge dos Erasmos,The São Jorge dos Erasmos Sugar Mill,"Sopé do Morro da Nova Cintra ou Marapé, Santos, SP",Santos,Brasil,1180,990,br,1170,990,bl
+29,1,bem,Prédio do Museu Republicano,Museum of the Republic Building,"Rua Barão de Itaim, 67",Itu,Brasil,890,760,tl,890,780,bl
+35,1,bem,Conjunto da Escola de Agricultura Luiz de Queiroz,The Luiz de Queiroz School of Agriculture Complex,"Rua Pádua Dias, 11, Campus de Piracicaba da USP",Piracicaba,Brasil,780,600,bl,790,580,tl
+36,1,bem,Campus de Ribeirão Preto,Ribeirão Preto Campus,Avenida Bandeirantes 3900,Ribeirão Preto,Brasil,720,90,tl,730,90,tr
+3,2,museu,Centro de Preservação Cultural,Centre for Cultural Preservation,"Rua Major Diogo, 353, Bela Vista",São Paulo,Brasil,1050,330,tr,1050,330,tr
+4,2,museu,Estação Ciência,Science Station,"Rua Guaicurus, 1394, Lapa",São Paulo,Brasil,730,130,br,720,120,tl
+9,2,museu,Museu de Arte Contemporânea,Contemporary Art  Museum,"Av. Pedro Álvares Cabral, 1301, Ibirapuera",São Paulo,Brasil,980,550,tl,980,550,tl
+12,2,museu,Museu de Ciências,Museum of Sciences,"Av. Miguel Estefano, 4200",São Paulo,Brasil,1140,940,bl,1140,940,bl
+13,2,museu,Museu de Zoologia,Zoology Museum,"Avenida Nazaré, 481, Ipiranga",São Paulo,Brasil,1230,550,tl,1230,550,tl
+16,2,museu,Museu Histórico Prof. Carlos da Silva Lacaz,The Prof. Carlos da Silva Lacaz Historical Museum,"Av. Dr. Arnaldo, 455, Cerqueira Cesar",São Paulo,Brasil,880,310,tr,880,310,tr
+17,2,museu,Museu Paulista ,Paulista Museum,"Parque da Independência, Ipiranga",São Paulo,Brasil,1230,520,tl,1230,520,tl
+21,2,mapa,Cidade Universitária,,Cidade Universitária,Cidade Universitária,Brasil,,,,,,
+23,2,bem,Vila Penteado,The Penteado Villa,"Rua Maranhão, 88, Higienópolis",São Paulo,Brasil,990,290,br,990,290,br
+24,2,bem,Conjunto do Centro Universitário Maria Antonia,The Maria Antonia University Centre Complex,"Rua Maria Antônia, 294 e 242, Higienópolis",São Paulo,Brasil,990,290,bl,990,290,bl
+25,2,bem,Casa de Dona Yayá,The House of Ms. Yayá,"Rua Major Diogo, 353, Bexiga",São Paulo,Brasil,1040,340,tr,1040,340,tr
+27,2,bem,Prédio do Museu Paulista,Paulista Museum Building,"Parque da Independência, Ipiranga",São Paulo,Brasil,1220,530,bl,1220,530,bl
+28,2,bem,Prédio do Museu de Zoologia,Zoology Museum Building,"Avenida Nazaré, 481, Ipiranga",São Paulo,Brasil,1220,540,tl,1220,540,tl
+30,2,bem,Prédio da Faculdade de Direito,The Law School Building,"Largo de São Francisco, 95, Centro",São Paulo,Brasil,1080,300,tl,1070,300,tl
+31,2,bem,Prédio da Faculdade de Medicina,School of Medicine Building,"Avenida Doutor Arnaldo, 455, Cerqueira César",São Paulo,Brasil,880,310,tl,880,310,tl
+32,2,bem,Prédio do Instituto Oscar Freire,The Oscar Freire Institute Building,"Rua Teodoro Sampaio, 11, Cerqueira César",São Paulo,Brasil,870,320,tr,870,320,tr
+33,2,bem,Museu de Arte Contemporânea ,Museum of Contemporary Art,"Av. Pedro Álvares Cabral, 1301, Ibirapuera",São Paulo,Brasil,970,540,tl,970,540,tl
+34,2,bem,Conjunto do Instituto de Astronomia e Geofísica,Institute of Astronomy and Geophysics complex,"Avenida Miguel Stefano, 4200, Parque do Estado",São Paulo,Brasil,1150,930,bl,1150,930,bl
+1,3,museu,Museu de Anatomia Humana,Museum of Human Anatomy,"Av. Prof. Lineu Prestes, 2415",Cidade Universitária,Brasil,410,730,bl,410,730,bl
+5,3,museu,Museu de Geociências,Geosciences Museum,"Rua do Lago, 562",Cidade Universitária,Brasil,970,700,tl,990,710,bl
+6,3,museu,Herbário SPF,SPF Herbarium,"Rua do Matão, 277",Cidade Universitária,Brasil,890,800,tr,890,800,tr
+7,3,museu,Instituto de Estudos Brasileiros,Institute of Brazilian Studies,"Av. Prof. Mello Morais, tr. 8, n. 140",Cidade Universitária,Brasil,1350,490,bl,1350,490,bl
+8,3,museu,Museu de Arte Contemporânea,Contemporary Art  Museum,"Rua da Reitoria, 160",Cidade Universitária,Brasil,1220,550,bl,1220,550,bl
+10,3,museu,Museu de Arqueologia e Etnologia,Museum of Archaeology and Ethnology,"Rua Prof. Almeida Prado, 1466",Cidade Universitária,Brasil,380,520,bl,390,520,br
+11,3,museu,Museu de Anatomia Veterinária,Museum of Veterinary Anatomy,"Av. Prof. Orlando Marques de Paiva, 87",Cidade Universitária,Brasil,490,970,br,490,970,br
+14,3,museu,Museu da Educação e do Brinquedo,Toy and Education Museum,"Av. da Universidade, 308",Cidade Universitária,Brasil,1550,710,tl,1550,720,bl
+19,3,museu,Museu Oceanográfico,Oceanography Museum,"Praça do Oceanográfico, 191",Cidade Universitária,Brasil,800,560,tr,800,560,tr
+22,3,bem,Prédio da Faculdade de Arquitetura e Urbanismo,School of Architecture and Urbanism Building,"Rua do Lago, 876",Cidade Universitária,Brasil,870,540,tl,870,540,tl
+37,3,bem,Prédio do Departamento de Mecânica da Escola Politécnica,Mechanics Department of the Polytechnic School Building,"Av. Prof. Mello Moraes, 2231",Cidade Universitária,Brasil,910,150,tl,910,150,tl
+38,3,bem,Centro de Práticas Esportivo,Sport Activities Complex,"Praça 02, Prof. Rubião Meira, 61",Cidade Universitária,Brasil,1460,590,tr,1460,590,tr
+39,3,bem,Prédio do Departamento de História e Geografia,Department of History and Geography Building,"Avenida Prof. Lineu Prestes, 338",Cidade Universitária,Brasil,1230,710,tl,1230,710,tl
+40,3,bem,Prédio do Departamento de Metalurgia da Escola Politécnica,Metallurgy Department of the Polytechnic School Building,"Av. Prof. Mello Moraes, 2231",Cidade Universitária,Brasil,850,120,tr,850,120,tr
