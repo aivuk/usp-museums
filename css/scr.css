@@ -52,6 +52,7 @@ body {
   width: 10px;
  /* background: -moz-linear-gradient(left, rgba(100, 100, 100, 1), rgba(255, 255, 255, 0));
   background: -webkit-linear-gradient(left, rgba(100, 100, 100, 1), rgba(255, 255, 255, 0)); */
+  background-color: white;
   position: relative;
   left: 0;
 }
@@ -77,8 +78,16 @@ body {
 }
 
 .mapLabel {
-    background: black;
+    background: url('../images/e1_n2_2.png') no-repeat 0 100%;
     color: white;
-    padding: 5px;
+    height: 215px;
+    width: 241px;
+    font-size: 9px;
 }
+
+.mapLabel  span {
+    margin-right: 20px;
+    float: right;
+}
+
 
