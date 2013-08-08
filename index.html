@@ -14,26 +14,85 @@
         return str;
     }
 
-    $(function () {
-        function openPanel(num) {
-            if (num == 2) {
-                $('#panel2').animate({'left': '960px'});
-                $('#panel3').animate({'left': '1920px'});
-                $('#panel4').animate({'left': '1920px'});
-            } else if (num == 3) {
-                $('#panel2').animate({'left': '430px'});
-                $('#panel3').animate({'left': '960px'});
-                $('#panel4').animate({'left': '1920px'});
-            } else if (num == 4) {
-                $('#panel2').animate({'left': '480px'});
-                $('#panel3').animate({'left': '960px'});
-                $('#panel4').animate({'left': '1440px'});
-            }
+    function turnOffButton(obj_id) {
+        var butOff = $('#button-' + lang + '-' + obj_id);
 
+        if (butOff && obj_info) {
+            butOff.attr('src', butOff.attr('src').replace('_1.png', '_0.png')); 
         }
 
-        $("#op3").click(function(){openPanel(3);});
-        $("#op4").click(function(){openPanel(4);});
+        $('#obj-' + lang + '-' + obj_id).css({'display': 'none'});
+    }
+
+    function showInfo(obj_num) {
+        if (getLeft(4) >= 1920) {
+            $('#panel4').animate({'left': '1440px'});
+        }
+        turnOffButton(obj_info);
+        var butOn = $('#button-' + lang + '-' + obj_num);
+        if (butOn) {
+            butOn.attr('src', butOn.attr('src').replace('_0.png', '_1.png')); 
+        }
+        $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
+        console.log($('#obj-' + lang + '-' + obj_num));
+        $('#obj-' + lang + '-' + obj_num).css({'display': 'inline'});
+        obj_info = obj_num;
+    }
+
+    function openPanel(num) {
+        if (num == 1) {
+            $('#panel1').animate({'left': '0'}, 650);
+            $('#panel2').animate({'left': '1920px'}, 650);
+            $('#panel3').animate({'left': '1920px'}, 650);
+            $('#panel4').animate({'left': '1920px'}, 650);
+        } else if (num == 2) {
+            turnOffButton(obj_info);
+            obj_info = 0;
+            $('#panel1').animate({'left': '-1900px'}, 650);
+            $('#panel2').animate({'left': '20px'}, 650);
+            $('#panel3').animate({'left': '1920px'}, 650);
+            $('#panel4').animate({'left': '1920px'}, 650);
+        } else if (num == 3) {
+            turnOffButton(obj_info);
+            obj_info = 0;
+            $('#panel2').animate({'left': '-1900px'}, 650);
+            $('#panel3').animate({'left': '20px'}, 650);
+            $('#panel4').animate({'left': '1920px'}, 650);
+        } else if (num == 4) {
+            $('#panel2').animate({'left': '480px'}, 650);
+            $('#panel3').animate({'left': '960px'}, 650);
+            $('#panel4').animate({'left': '1440px'}, 650);
+        }
+
+    }
+
+    function changeLanguage(l) {
+        if (l != lang) {
+            $('.'+ lang).hide();
+            $('.'+ l).show();
+            $('#mus-txt-content > *').hide();
+            $("#map-1").attr("usemap", "#Map1-" + l);
+            var butOff = $('#button-' + lang + '-' + obj_info);
+            if (butOff && obj_info > 0) {
+                $('#button-' + lang + '-' + obj_info).attr('src', butOff.attr('src').replace('_1.png', '_0.png'));
+            }
+            $('#panel4').toggleClass('whiteBorder');
+            lang = l;
+            if (obj_info > 0)
+                showInfo(obj_info);
+        }
+
+    }
+
+    var lang = "en";
+    var obj_info = 0;
+
+    $(function () {
+        //$("#op3").click(function(){openPanel(3);});
+        //$("#op4").click(function(){openPanel(4);});
+
+        $("#changLanguageButton-en-Por").click(function(){changeLanguage("pt")});
+        $("#changLanguageButton-pt-Eng").click(function(){changeLanguage("en")});
 
         getLeft = function (num) {
             var panelLeft = $("#panel" + String(num)).css("left");
@@ -42,31 +101,47 @@
             return left;
         }
 
+        $("#p1-handle").mousedown(function (data) {
+           openPanel(1);
+        });
+
         $("#p2-handle").mousedown(function (data) {
-            $("body").mousemove(function (data) {
-                var p3Left = getLeft(3);
-                if (data.clientX < p3Left - 30 && data.clientX > 30) {
-                    $("#panel2").css({'left': data.clientX});
-                }
-            }).mouseup(function () {
-                $("body").off("mousemove");
-            });
+           openPanel(2);
+           // $("body").mousemove(function (data) {
+           //     var p3Left = getLeft(3);
+           //     if (data.clientX < p3Left - 30 && data.clientX > 30) {
+           //         $("#panel2").css({'left': data.clientX});
+           //     }
+           // }).mouseup(function () {
+           //     $("body").off("mousemove");
+           // });
         });
 
         $("#p3-handle").mousedown(function (data) {
-            $("body").mousemove(function (data) {
-                var p2Left = getLeft(2);
-                var p4Left = getLeft(4);
+           openPanel(3);
+           // $("body").mousemove(function (data) {
+           //     var p2Left = getLeft(2);
+           //     var p4Left = getLeft(4);
 
-                if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
-                    $("#panel3").css({'left': data.clientX});
+           //     if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
+           //         $("#panel3").css({'left': data.clientX});
+           //     }
+           // }).mouseup(function () {
+           //     $("body").off("mousemove");
+           // });
+        });//
+
+        $('#map-3').click(function (e) { 
+                if (getLeft(4) < 1920) {
+                    openPanel(3);
+                    var butOff = $('#button-' + lang + '-' + obj_info);
+                    if (butOff && obj_info > 0) {
+                        butOff.attr('src', butOff.attr('src').replace('_1.png', '_0.png')); 
+                        $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
+                        obj_info = 0;
+                    }
                 }
-            }).mouseup(function () {
-                $("body").off("mousemove");
             });
-        });
-
-        var lang = "en";
 
         $.ajax({
                     type: "GET",
@@ -79,21 +154,37 @@
 
             info.forEach(function (e,i) {
                 var obj_info_en = $("<div/>", {
+                        class: 'en',
                         id: 'obj-en-'+ e.n,
                     })
                     .css({'display': 'none'})
-                    .html(e.text);
+                    .append($("<h1/>", {
+                        class: 'name',
+                        text: e.name.toUpperCase()
+                        }))
+                    .append($('<span/>', {
+                        text: e.text
+                        }));
+
 
                 var obj_info_pt = $("<div/>", {
+                        class: 'pt',
                         id: 'obj-pt-'+ e.n,
                     })
                     .css({'display': 'none'})
                     .append($("<h1/>", {
-                        text: e.nome
+                        class: 'name',
+                        text: e.nome.toUpperCase()
                         }))
                     .append($("<div/>", {
                         text: e.texto
                         }));
+
+                var rot_obj_info_pt = obj_info_pt.clone().attr('id', 'obj-pt-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextPt').toggleClass('pt').toggleClass('en');
+                var rot_obj_info_en = obj_info_en.clone().attr('id', 'obj-en-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextEn').toggleClass('en').toggleClass('pt');
+
+                obj_info_en.append(rot_obj_info_pt);
+                obj_info_pt.append(rot_obj_info_en);
 
                 $("#mus-txt-content").append(obj_info_en);
                 $("#mus-txt-content").append(obj_info_pt);
@@ -101,43 +192,155 @@
                 var x, y;
 
                 $("#panel" + e.escala).append($("<img/>", {
-                    id: "button-" + e.n,
-                    src: "images/buttons/" + e.escala + "/en/e1_n" + e.n.lpad("0", 2) + "_0.png"
+                    id: "button-en-" + e.n,
+                    class: "en",
+                    src: "images/buttons/" + e.escala + "/en/e" + e.escala + "_n" + e.n.lpad("0", 2) + "_0.png"
                 }).css({
                     position: 'absolute',
                     left: e['x en'] + 'px',
                     top: e['y en'] + 'px'
                     }));
 
-                if (e.n == "39") {
-                    $("#button-39").click(function(){openPanel(2);});
-                }
-                if (e.n == "38") {
-                    $("#button-38").click(function(){openPanel(3);});
-                }
+                $("#panel" + e.escala).append($("<img/>", {
+                    id: "button-pt-" + e.n,
+                    class: "pt",
+                    src: "images/buttons/" + e.escala + "/pt/e" + e.escala + "_n" + e.n.lpad("0", 2) + "_0.png"
+                }).css({
+                    position: 'absolute',
+                    display: 'none',
+                    left: e['x pt'] + 'px',
+                    top: e['y pt'] + 'px'
+                    }));
 
             });
 
+            $(".pt").hide();
         }
    });
 </script>
 </head>
 <body>
-
 <div id="panel1" class="column">
+    <div id="p1-handle" class="panelHandle" style="z-index: 20;"></div>
+    <img id="map-1" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map1-en">
+    <map name="Map1-en" id="Map1-en">
+      <area shape="poly" coords="829,90,718,90,719,210,729,210,729,99,830,100" onclick="javascript:showInfo(20);" href="#" target="_self" />
+      <area shape="poly" coords="730,551,730,369,940,371,940,359,719,359,718,550" onclick="javascript:showInfo(8);" href="#" target="_self" />
+      <area shape="poly" coords="1099,579,790,579,789,841,799,841,798,590,1100,590" onclick="javascript:showInfo(14);" href="#" target="_self" />
+      <area shape="poly" coords="810,810,800,811,800,590,1020,590,1021,601,810,601" onclick="javascript:showInfo(23);" href="#" target="_self" />
+      <area shape="poly" coords="900,899,890,900,890,760,1039,759,1040,771,899,769" onclick="javascript:showInfo(36);" href="#" target="_self" />
+      <area shape="poly" coords="910,871,899,871,900,769,1010,771,1010,781,910,781" onclick="javascript:showInfo(19);" href="#" target="_self" />
+      <area shape="poly" coords="1070,850,1140,849,1140,861,1069,860" onclick="javascript:openPanel(2);" href="#" target="_self" />
+      <area shape="poly" coords="1010,979,1170,980,1168,840,1181,840,1179,991,1010,991" onclick="javascript:showInfo(26);" href="#" target="_self" />
+    </map>
+    <map name="Map1-pt" id="Map1-pt">
+      <area shape="poly" coords="1169,819,1181,818,1180,978,1320,978,1320,992,1169,990" onclick="javascript:showInfo(26);" href="#" target="_self" />
+      <area shape="poly" coords="1068,849,1140,849,1142,860,1069,861" onclick="javascript:openPanel(2);" href="#" target="_self" />
+      <area shape="poly" coords="1031,770,889,771,889,618,900,617,899,761,1030,759" onclick="javascript:showInfo(36);" href="#" target="_self" />
+      <area shape="poly" coords="911,650,898,648,900,759,999,760,999,748,910,749" onclick="javascript:showInfo(19);" href="#" target="_self" />
+      <area shape="poly" coords="789,278,800,278,799,580,1050,580,1051,591,788,591" onclick="javascript:showInfo(14);" href="#" target="_self" />
+      <area shape="poly" coords="811,359,800,359,799,579,1021,581,1021,568,812,569" onclick="javascript:showInfo(23);" href="#" target="_self" />
+      <area shape="poly" coords="538,358,730,358,732,581,719,583,720,370,539,371" onclick="javascript:showInfo(8);" href="#" target="_self" />
+      <area shape="poly" coords="619,89,740,88,742,200,729,200,731,101,619,102" onclick="javascript:showInfo(20);" href="#" target="_self" />
+    </map>
 </div>
 
 <div id="panel2" class="column">
-    <div id="p2-handle" class="panelHandle"></div>
+    <div id="p2-handle" class="panelHandle" style="z-index: 20;"></div>
+    <img id="map-2" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map2-en">
+    <map name="Map2-en" id="Map2-en">
+      <area shape="poly" coords="640,120,639,130,728,128,729,40,719,40,721,118" onclick="javascript:showInfo(9);" href="#" target="_self" />
+      <area shape="rect" coords="500,389,620,401" onclick="javascript:openPanel(3);" href="#" target="_self" />
+      <area shape="poly" coords="649,310,649,320,869,320,870,509,880,510,879,309" onclick="javascript:showInfo(17);" href="#" target="_self" />
+      <area shape="poly" coords="710,320" href="#" />
+      <area shape="poly" coords="710,320,710,330,858,329,860,469,870,469,868,320" onclick="javascript:showInfo(33);" href="#" target="_self" />
+      <area shape="poly" coords="880,309,1009,309,1010,321,890,320,889,458,879,459" onclick="javascript:showInfo(29);" href="#" target="_self" />
+      <area shape="poly" coords="899,329,899,340,1039,339,1039,479,1049,479,1050,329" onclick="javascript:showInfo(1);" href="#" target="_self" />
+      <area shape="poly" coords="970,339,969,350,1029,351,1031,440,1038,440,1039,340" onclick="javascript:showInfo(21);" href="#" target="_self" />
+      <area shape="poly" coords="890,279,890,289,991,289,991,209,981,210,980,279" onclick="javascript:showInfo(37);" href="#" target="_self" />
+      <area shape="poly" coords="1139,840,1149,840,1149,930,1249,930,1250,940,1139,940" onclick="javascript:showInfo(7);" href="#" target="_self" />
+      <area shape="poly" coords="1149,720,1160,720,1159,919,1359,920,1359,930,1149,929" onclick="javascript:showInfo(25);" href="#" target="_self" />
+      <area shape="poly" coords="980,540,1121,541,1121,550,991,551,990,689,980,690" onclick="javascript:showInfo(3);" href="#" target="_self" />
+      <area shape="poly" coords="1220,679,1229,678,1230,549,1349,549,1349,539,1220,540" onclick="javascript:showInfo(34);" href="#" target="_self" />
+      <area shape="poly" coords="1219,400,1229,399,1229,520,1350,520,1350,530,1219,531" onclick="javascript:showInfo(35);" href="#" target="_self" />
+      <area shape="poly" coords="1229,429,1240,430,1241,508,1320,510,1320,520,1229,520" onclick="javascript:showInfo(2);" href="#" target="_self" />
+      <area shape="poly" coords="1231,550,1319,550,1320,560,1241,561,1240,649,1229,650" onclick="javascript:showInfo(5);"  href="#" />
+      <area shape="poly" coords="1070,300,1189,300,1190,310,1079,310,1080,450,1070,450" onclick="javascript:showInfo(28);" href="#" target="_self" />
+      <area shape="poly" coords="989,79,999,79,1000,279,1189,280,1189,290,992,291" onclick="javascript:showInfo(24);" href="#" target="_self" />
+    </map>
+    <map name="Map2-pt" id="Map2-pt">
+      <area shape="rect" coords="500,390,611,401" onclick="javascript:openPanel(3);" href="#" target="_self" />
+      <area shape="poly" coords="680,309,879,310,880,539,869,541,869,319,679,320" onclick="javascript:showInfo(17);" href="#" target="_self" />
+      <area shape="poly" coords="720,320,720,329,860,330,859,480,868,480,869,319" onclick="javascript:showInfo(33);" href="#" target="_self" />
+      <area shape="poly" coords="880,309,1029,309,1030,319,890,320,890,439,879,441" onclick="javascript:showInfo(29);" href="#" target="_self" />
+      <area shape="poly" coords="900,330,1049,330,1050,480,1039,480,1040,339,899,340" onclick="javascript:showInfo(1);" href="#" target="_self" />
+      <area shape="poly" coords="940,339,1038,340,1039,410,1029,410,1030,350,940,350" onclick="javascript:showInfo(21);" href="#" target="_self" />
+      <area shape="poly" coords="1071,300,1220,299,1220,310,1081,310,1081,419,1070,420" onclick="javascript:showInfo(28);" href="#" target="_self" />
+      <area shape="poly" coords="979,540,1129,541,1130,551,989,551,990,679,979,680" onclick="javascript:showInfo(3);" href="#" target="_self" />
+      <area shape="poly" coords="1220,540,1350,541,1350,551,1230,551,1230,660,1219,660" onclick="javascript:showInfo(34);" href="#" target="_self" />
+      <area shape="poly" coords="1230,630,1232,553" href="#" />
+      <area shape="poly" coords="1150,830,1150,929,1239,930,1239,940,1139,939,1140,829" onclick="javascript:showInfo(7);" href="#" target="_self" />
+      <area shape="poly" coords="1149,720,1159,719,1159,919,1359,919,1360,930,1151,930" onclick="javascript:showInfo(25);" href="#" target="_self" />
+      <area shape="poly" coords="1229,550,1231,630,1241,630,1240,560,1319,560,1319,550" onclick="javascript:showInfo(5);" href="#" target="_self" />
+      <area shape="poly" coords="1219,409,1229,409,1230,520,1339,519,1340,530,1219,529" onclick="javascript:showInfo(35);" href="#" target="_self" />
+      <area shape="poly" coords="1229,430,1240,429,1240,509,1309,509,1310,519,1230,519" onclick="javascript:showInfo(2);" href="#" target="_self" />
+      <area shape="poly" coords="980,190,989,189,989,289,909,290,909,281,979,280" onclick="javascript:showInfo(37);" href="#" target="_self" />
+      <area shape="poly" coords="989,90,999,90,1000,280,1199,279,1200,290,989,290" onclick="javascript:showInfo(24);" href="#" target="_self" />
+      <area shape="poly" coords="719,119,809,119,810,130,729,130,729,209,719,209" onclick="javascript:showInfo(9);" href="#" target="_self" />
+    </map>
 </div>
 
 <div id="panel3" class="column">
-    <div id="p3-handle" class="panelHandle"></div>
+    <div id="p3-handle" class="panelHandle" style="z-index: 40;"></div>
+    <img id="map-3" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:30" usemap="#Map3-en">
+    <map name="Map3-en" id="Map3-en">
+      <area shape="poly" coords="379,360,389,360,389,510,549,510,550,520,379,519" onclick="javascript:showInfo(6);" href="#" target="_self" />
+      <area shape="poly" coords="409,600,409,730,539,730,539,720,419,720,420,600" onclick="javascript:showInfo(12);" href="#" target="_self" />
+      <area shape="poly" coords="679,559,679,570,789,570,789,670,800,669,800,560" onclick="javascript:showInfo(18);" href="#" target="_self" />
+      <area shape="poly" coords="869,539,1080,539,1081,550,880,550,879,760,869,760" onclick="javascript:showInfo(27);" href="#" target="_self" />
+      <area shape="poly" coords="989,700,1099,700,1099,710,999,710,999,810,989,811" onclick="javascript:showInfo(16);" href="#" target="_self" />
+      <area shape="poly" coords="810,800,889,800,890,870,879,870,878,810,809,810" onclick="javascript:showInfo(10);" href="#" target="_self" />
+      <area shape="poly" coords="1229,710,1439,710,1440,720,1240,720,1240,920,1229,920" onclick="javascript:showInfo(30);" href="#" target="_self" />
+      <area shape="poly" coords="1549,710,1680,709,1680,721,1559,720,1560,869,1549,869" onclick="javascript:showInfo(15);" href="#" target="_self" />
+      <area shape="poly" coords="1460,590,1580,589,1579,600,1470,600,1470,729,1459,729" onclick="javascript:showInfo(22);" href="#" target="_self" />
+      <area shape="poly" coords="588,120,850,119,850,389,839,390,838,131,588,129" onclick="javascript:showInfo(32);" href="#" target="_self" />
+      <area shape="poly" coords="910,150,1170,149,1171,160,920,160,920,410,909,410" onclick="javascript:showInfo(31);" href="#" target="_self" />
+      <area shape="poly" coords="1219,400,1229,400,1229,540,1359,540,1360,550,1219,549" onclick="javascript:showInfo(4);" href="#" target="_self" />
+      <area shape="poly" coords="1350,330,1360,329,1360,478,1489,479,1489,490,1349,489" onclick="javascript:showInfo(11);" href="#" target="_self" />
+      <area shape="poly" coords="340,960,479,959,480,820,490,819,489,970,339,970" onclick="javascript:showInfo(13);" href="#" target="_self" />
+    </map>
+    <map name="Map3-pt" id="Map3-pt">
+      <area shape="poly" coords="409,579,410,730,559,729,558,720,420,720,419,579" onclick="javascript:showInfo(12);" href="#" target="_self" />
+      <area shape="poly" coords="229,509,379,509,379,350,388,350,389,520,228,520" onclick="javascript:showInfo(6);" href="#" target="_self" />
+      <area shape="poly" coords="689,560,799,559,799,680,790,680,788,569,688,570" onclick="javascript:showInfo(18);" href="#" target="_self" />
+      <area shape="poly" coords="869,539,1090,539,1089,549,879,550,879,749,868,750" onclick="javascript:showInfo(27);" href="#" target="_self" />
+      <area shape="poly" coords="989,599,999,598,1000,698,1099,699,1100,711,989,711" onclick="javascript:showInfo(16);" href="#" target="_self" />
+      <area shape="poly" coords="1220,409,1229,409,1229,539,1359,540,1359,550,1219,549" onclick="javascript:showInfo(4);" href="#" target="_self" />
+      <area shape="poly" coords="1349,349,1359,349,1360,479,1499,479,1500,490,1349,490" onclick="javascript:showInfo(11);" href="#" target="_self" />
+      <area shape="poly" coords="1230,930,1230,720,1450,720,1449,730,1240,730,1240,930" onclick="javascript:showInfo(30);" href="#" target="_self" />
+      <area shape="poly" coords="1331,590,1469,591,1470,711,1460,711,1459,601,1331,601" onclick="javascript:showInfo(22);" href="#" target="_self" />
+      <area shape="poly" coords="910,150,1170,149,1170,160,919,160,920,410,909,410" onclick="javascript:showInfo(31);" href="#" target="_self" />
+      <area shape="poly" coords="579,119,850,119,850,390,839,391,839,130,580,129" onclick="javascript:showInfo(32);" href="#" target="_self" />
+      <area shape="poly" coords="810,800,890,800,890,890,879,890,877,811,809,810" onclick="javascript:showInfo(10);" href="#" target="_self" />
+      <area shape="poly" coords="339,960,478,959,479,820,490,819,490,970,338,971" onclick="javascript:showInfo(13);" href="#" target="_self" />
+      <area shape="poly" coords="1549,590,1560,590,1560,710,1710,710,1710,720,1549,719" onclick="javascript:showInfo(15);" href="#" target="_self" />
+    </map>
+
 </div>
 
 <div id="panel4" class="column">
     <div id="mus-txt-content">
     </div>
+</div>
+<div id="languageSwitcher">
+   <img id="changLanguageButton-pt-Eng" class="ls-en pt" src="images/buttons/interface/pt/n41_0.png">
+   <img id="changLanguageButton-pt-Por" class="ls-pt pt" src="images/buttons/interface/pt/n40_1.png">
+   <img id="changLanguageButton-en-Eng" class="ls-en en" src="images/buttons/interface/en/n41_1.png">
+   <img id="changLanguageButton-en-Por" class="ls-pt en" src="images/buttons/interface/en/n40_0.png">
+</div>
+<div id="leftButtons">
+   <img id="museums-en" class="but-museums-en" src="images/buttons/interface/pt/n42_0.png">
+   <img id="heritage-en" class="but-heritage-en" src="images/buttons/interface/pt/n43_0.png">
 </div>
 </body>
 </html>
