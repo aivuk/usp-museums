@@ -175,6 +175,11 @@
             unButtonOff.attr({'src': unButtonOff.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
             unButtonOn.attr({'src': unButtonOn.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
 
+            var museumLegend = $('#museum');
+            var heritageLegend = $('#heritage');
+            museumLegend.attr({'src': museumLegend.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+            heritageLegend.attr({'src': heritageLegend.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+
             $('.'+ l).show();
 
             $('#mus-txt-content > *').hide();
@@ -272,7 +277,9 @@
             info = $.csv.toObjects(data);
 
             info.forEach(function (e,i) {
-                var obj_info_en = $("<div/>", {
+                if (e.grupo == 'museu' || e.grupo == 'bem' || e.grupo == 'mapa') {
+                    if (e.grupo != 'mapa') {
+                    var obj_info_en = $("<div/>", {
                         class: 'en',
                         id: 'obj-en-'+ e.n,
                     })
@@ -280,10 +287,10 @@
                     .append($("<h1/>", {
                         class: 'name',
                         text: e.name.toUpperCase()
-                        }))
+                    }))
                     .append($('<span/>', {
                         text: e.text
-                        }));
+                    }));
 
                     var info_list = $('<ul/>');
 
@@ -305,7 +312,7 @@
                     obj_info_en.append(info_list);
 
 
-                var obj_info_pt = $("<div/>", {
+                    var obj_info_pt = $("<div/>", {
                         class: 'pt',
                         id: 'obj-pt-'+ e.n,
                     })
@@ -313,10 +320,10 @@
                     .append($("<h1/>", {
                         class: 'name',
                         text: e.nome.toUpperCase()
-                        }))
+                    }))
                     .append($("<div/>", {
                         text: e.texto
-                        }));
+                    }));
 
                     var info_list = $('<ul/>');
 
@@ -337,66 +344,67 @@
 
                     obj_info_pt.append(info_list);
 
-                var rot_obj_info_pt = obj_info_pt.clone().attr('id', 'obj-pt-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextPt').toggleClass('pt').toggleClass('en');
-                var rot_obj_info_en = obj_info_en.clone().attr('id', 'obj-en-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextEn').toggleClass('en').toggleClass('pt');
+                    var rot_obj_info_pt = obj_info_pt.clone().attr('id', 'obj-pt-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextPt').toggleClass('pt').toggleClass('en');
+                    var rot_obj_info_en = obj_info_en.clone().attr('id', 'obj-en-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextEn').toggleClass('en').toggleClass('pt');
 
-                obj_info_en.append(rot_obj_info_pt);
-                obj_info_pt.append(rot_obj_info_en);
+                    obj_info_en.append(rot_obj_info_pt);
+                    obj_info_pt.append(rot_obj_info_en);
 
-                if (e['rel'] != '') {
-                    var top_bar = $('<div/>', {'id': 'top-obj-en-'+ e.n, 'class': 'topInfo'}).css('display', 'none');
-                    var relatedObj = info.filter(function (fe) {return fe.n == e['rel']})[0];
+                    if (e['rel'] != '') {
+                        var relatedObj = info.filter(function (fe) {return fe.n == e['rel']})[0];
+                        var top_bar = $('<div/>', {'id': 'top-obj-en-'+ e.n, 'class': 'topInfo', 'onclick': 'javascript:showInfo(' + relatedObj['n'] + ');'}).css({'display': 'none', 'z-index': '20'});
 
-                    if (relatedObj['grupo'] == 'bem') {
-                        top_bar.addClass('heritage');
-                    } else if (relatedObj['grupo'] == 'museu') {
-                        top_bar.addClass('museum');
+                        if (relatedObj['grupo'] == 'bem') {
+                            top_bar.addClass('heritage');
+                        } else if (relatedObj['grupo'] == 'museu') {
+                            top_bar.addClass('museum');
+                        }
+
+                        top_bar.append($('<h1/>').text(relatedObj.name));
+
+                        $("#mus-txt-content").append(top_bar);
+
+                        top_bar = $('<div/>', {'id': 'top-obj-pt-'+ e.n, 'class': 'topInfo', 'onclick': 'javascript:showInfo(' + relatedObj['n'] + ');'}).css({'display': 'none', 'z-index': '20'});
+
+                        if (relatedObj['grupo'] == 'bem') {
+                            top_bar.addClass('heritage');
+                        } else if (relatedObj['grupo'] == 'museu') {
+                            top_bar.addClass('museum');
+                        }
+
+                        top_bar.append($('<h1/>').text(relatedObj.nome));
+
+                        $("#mus-txt-content").append(top_bar);
+
                     }
 
-                    top_bar.append($('<h1/>').text(relatedObj.name));
-
-                    $("#mus-txt-content").append(top_bar);
-
-                    top_bar = $('<div/>', {'id': 'top-obj-pt-'+ e.n, 'class': 'topInfo'}).css('display', 'none');
-
-                    if (relatedObj['grupo'] == 'bem') {
-                        top_bar.addClass('heritage');
-                    } else if (relatedObj['grupo'] == 'museu') {
-                        top_bar.addClass('museum');
-                    }
-
-                    top_bar.append($('<h1/>').text(relatedObj.nome));
-
-                    $("#mus-txt-content").append(top_bar);
-
+                    $("#mus-txt-content").append(obj_info_en);
+                    $("#mus-txt-content").append(obj_info_pt);
                 }
 
-                $("#mus-txt-content").append(obj_info_en);
-                $("#mus-txt-content").append(obj_info_pt);
+                    var x, y;
 
-                var x, y;
-
-                $("#panel" + e.escala).append($("<img/>", {
-                    id: "button-en-" + e.n,
-                    class: "en",
-                    src: "images/buttons/" + e.escala + "/en/e" + e.escala + "_n" + e.n + "_0.png"
-                }).css({
-                    position: 'absolute',
-                    left: e['x en'] + 'px',
-                    top: e['y en'] + 'px'
+                    $("#panel" + e.escala).append($("<img/>", {
+                        id: "button-en-" + e.n,
+                        class: "en",
+                        src: "images/buttons/" + e.escala + "/en/e" + e.escala + "_n" + e.n + "_0.png"
+                    }).css({
+                        position: 'absolute',
+                        left: e['x en'] + 'px',
+                        top: e['y en'] + 'px'
                     }));
 
-                $("#panel" + e.escala).append($("<img/>", {
-                    id: "button-pt-" + e.n,
-                    class: "pt",
-                    src: "images/buttons/" + e.escala + "/pt/e" + e.escala + "_n" + e.n + "_0.png"
-                }).css({
-                    position: 'absolute',
-                    display: 'none',
-                    left: e['x pt'] + 'px',
-                    top: e['y pt'] + 'px'
+                    $("#panel" + e.escala).append($("<img/>", {
+                        id: "button-pt-" + e.n,
+                        class: "pt",
+                        src: "images/buttons/" + e.escala + "/pt/e" + e.escala + "_n" + e.n + "_0.png"
+                    }).css({
+                        position: 'absolute',
+                        display: 'none',
+                        left: e['x pt'] + 'px',
+                        top: e['y pt'] + 'px'
                     }));
-
+                }
             });
 
             $(".pt").hide();

@@ -122,7 +122,7 @@ body > * {
     clear: both;
     padding-top: 130px;
     width: 300px;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #mus-txt-content h1.name {
@@ -168,7 +168,7 @@ body > * {
 
 .rotTextEn {
   height: 200px;
-  width: 230px;
+  width: 250px;
   position: absolute;
   left: 0px;
   margin-top: 50px;
@@ -238,7 +238,7 @@ body > * {
     top: 150px;
 }
 
-#museums.pt-pos {
+#museum.pt-pos {
     position: absolute;
     left: 60px;
     top: 170px;
