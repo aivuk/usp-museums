@@ -194,7 +194,7 @@
                 $("#panel" + e.escala).append($("<img/>", {
                     id: "button-en-" + e.n,
                     class: "en",
-                    src: "images/buttons/" + e.escala + "/en/e" + e.escala + "_n" + e.n.lpad("0", 2) + "_0.png"
+                    src: "images/buttons/" + e.escala + "/en/e" + e.escala + "_n" + e.n + "_0.png"
                 }).css({
                     position: 'absolute',
                     left: e['x en'] + 'px',
@@ -204,7 +204,7 @@
                 $("#panel" + e.escala).append($("<img/>", {
                     id: "button-pt-" + e.n,
                     class: "pt",
-                    src: "images/buttons/" + e.escala + "/pt/e" + e.escala + "_n" + e.n.lpad("0", 2) + "_0.png"
+                    src: "images/buttons/" + e.escala + "/pt/e" + e.escala + "_n" + e.n + "_0.png"
                 }).css({
                     position: 'absolute',
                     display: 'none',
@@ -224,24 +224,24 @@
     <div id="p1-handle" class="panelHandle" style="z-index: 20;"></div>
     <img id="map-1" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map1-en">
     <map name="Map1-en" id="Map1-en">
-      <area shape="poly" coords="829,90,718,90,719,210,729,210,729,99,830,100" onclick="javascript:showInfo(20);" href="#" target="_self" />
-      <area shape="poly" coords="730,551,730,369,940,371,940,359,719,359,718,550" onclick="javascript:showInfo(8);" href="#" target="_self" />
-      <area shape="poly" coords="1099,579,790,579,789,841,799,841,798,590,1100,590" onclick="javascript:showInfo(14);" href="#" target="_self" />
-      <area shape="poly" coords="810,810,800,811,800,590,1020,590,1021,601,810,601" onclick="javascript:showInfo(23);" href="#" target="_self" />
-      <area shape="poly" coords="900,899,890,900,890,760,1039,759,1040,771,899,769" onclick="javascript:showInfo(36);" href="#" target="_self" />
-      <area shape="poly" coords="910,871,899,871,900,769,1010,771,1010,781,910,781" onclick="javascript:showInfo(19);" href="#" target="_self" />
-      <area shape="poly" coords="1070,850,1140,849,1140,861,1069,860" onclick="javascript:openPanel(2);" href="#" target="_self" />
-      <area shape="poly" coords="1010,979,1170,980,1168,840,1181,840,1179,991,1010,991" onclick="javascript:showInfo(26);" href="#" target="_self" />
-    </map>
+      <area shape="poly" coords="1043,837,1157,840,1155,878,1045,877" onclick="javascript:openPanel(2);" href="#" target="_self" />
+      <area shape="poly" coords="704,79,707,263,750,264,751,120,882,121,880,80" onclick="javascript:showInfo(20);" href="#" target="_self" />
+      <area shape="poly" coords="1044,400,1043,334,699,339,695,636,743,634,745,401" onclick="javascript:showInfo(8);" href="#" target="_self" />
+      <area shape="poly" coords="904,975,904,775,1119,775,1117,742,875,743,872,974" onclick="javascript:showInfo(36);" href="#" target="_self" />
+      <area shape="poly" coords="904,918,904,776,1077,775,1075,803,930,803,934,917" onclick="javascript:showInfo(19);" href="#" target="_self" />
+      <area shape="poly" coords="798,940,799,748,799,589,1101,589,1226,589,1224,552,773,556,761,941" onclick="javascript:showInfo(14);" href="#" target="_self" />
+      <area shape="poly" coords="1111,588,799,589,799,896,835,897,836,626,1109,626" onclick="javascript:showInfo(23);" href="#" target="_self" />
+      <area shape="poly" coords="950,973,948,1015,1201,1015,1206,782,1163,783,1161,972" onclick="javascript:showInfo(26);" href="#" target="_self" />
+   </map>
     <map name="Map1-pt" id="Map1-pt">
-      <area shape="poly" coords="1169,819,1181,818,1180,978,1320,978,1320,992,1169,990" onclick="javascript:showInfo(26);" href="#" target="_self" />
-      <area shape="poly" coords="1068,849,1140,849,1142,860,1069,861" onclick="javascript:openPanel(2);" href="#" target="_self" />
-      <area shape="poly" coords="1031,770,889,771,889,618,900,617,899,761,1030,759" onclick="javascript:showInfo(36);" href="#" target="_self" />
-      <area shape="poly" coords="911,650,898,648,900,759,999,760,999,748,910,749" onclick="javascript:showInfo(19);" href="#" target="_self" />
-      <area shape="poly" coords="789,278,800,278,799,580,1050,580,1051,591,788,591" onclick="javascript:showInfo(14);" href="#" target="_self" />
-      <area shape="poly" coords="811,359,800,359,799,579,1021,581,1021,568,812,569" onclick="javascript:showInfo(23);" href="#" target="_self" />
-      <area shape="poly" coords="538,358,730,358,732,581,719,583,720,370,539,371" onclick="javascript:showInfo(8);" href="#" target="_self" />
-      <area shape="poly" coords="619,89,740,88,742,200,729,200,731,101,619,102" onclick="javascript:showInfo(20);" href="#" target="_self" />
+      <area shape="poly" coords="1164,747,1206,746,1209,956,1387,953,1386,1001,1166,1002" onclick="javascript:showInfo(26);" href="#" target="_self" />
+      <area shape="poly" coords="769,162,799,162,797,574,1168,576,1169,594,771,593" onclick="javascript:showInfo(14);" href="#" target="_self" />
+      <area shape="poly" coords="834,256,800,259,799,573,1107,576,1109,542,841,543" onclick="javascript:showInfo(23);" href="#" target="_self" />
+      <area shape="poly" coords="562,81,564,114,703,116,704,249,744,249,750,80" onclick="javascript:showInfo(20);" href="#" target="_self" />
+      <area shape="rect" coords="1054,844,1158,887" onclick="javascript:openPanel(2);" href="#" target="_self" />
+      <area shape="poly" coords="1051,786,904,786,905,624,940,626,945,746,1050,747" onclick="javascript:showInfo(19);" href="#" target="_self" />
+      <area shape="poly" coords="444,341,442,398,688,395,692,684,753,686,747,339" onclick="javascript:showInfo(8);" href="#" target="_self" />
+      <area shape="poly" coords="904,597,870,598,850,821,1078,821,1080,786,904,786" onclick="javascript:showInfo(36);" href="#" target="_self" />
     </map>
 </div>
 
@@ -249,44 +249,44 @@
     <div id="p2-handle" class="panelHandle" style="z-index: 20;"></div>
     <img id="map-2" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map2-en">
     <map name="Map2-en" id="Map2-en">
-      <area shape="poly" coords="640,120,639,130,728,128,729,40,719,40,721,118" onclick="javascript:showInfo(9);" href="#" target="_self" />
-      <area shape="rect" coords="500,389,620,401" onclick="javascript:openPanel(3);" href="#" target="_self" />
-      <area shape="poly" coords="649,310,649,320,869,320,870,509,880,510,879,309" onclick="javascript:showInfo(17);" href="#" target="_self" />
+      <area shape="poly" coords="592,118,594,152,739,153,738,19,697,21,696,117" onclick="javascript:showInfo(9);" href="#" target="_self" />
+      <area shape="rect" coords="485,377,655,409" onclick="javascript:openPanel(3);" href="#" target="_self" />
+      <area shape="poly" coords="506,299,508,324,818,324,817,600,832,601,830,298" onclick="javascript:showInfo(17);" href="#" target="_self" />
       <area shape="poly" coords="710,320" href="#" />
-      <area shape="poly" coords="710,320,710,330,858,329,860,469,870,469,868,320" onclick="javascript:showInfo(33);" href="#" target="_self" />
-      <area shape="poly" coords="880,309,1009,309,1010,321,890,320,889,458,879,459" onclick="javascript:showInfo(29);" href="#" target="_self" />
-      <area shape="poly" coords="899,329,899,340,1039,339,1039,479,1049,479,1050,329" onclick="javascript:showInfo(1);" href="#" target="_self" />
-      <area shape="poly" coords="970,339,969,350,1029,351,1031,440,1038,440,1039,340" onclick="javascript:showInfo(21);" href="#" target="_self" />
-      <area shape="poly" coords="890,279,890,289,991,289,991,209,981,210,980,279" onclick="javascript:showInfo(37);" href="#" target="_self" />
-      <area shape="poly" coords="1139,840,1149,840,1149,930,1249,930,1250,940,1139,940" onclick="javascript:showInfo(7);" href="#" target="_self" />
-      <area shape="poly" coords="1149,720,1160,720,1159,919,1359,920,1359,930,1149,929" onclick="javascript:showInfo(25);" href="#" target="_self" />
-      <area shape="poly" coords="980,540,1121,541,1121,550,991,551,990,689,980,690" onclick="javascript:showInfo(3);" href="#" target="_self" />
-      <area shape="poly" coords="1220,679,1229,678,1230,549,1349,549,1349,539,1220,540" onclick="javascript:showInfo(34);" href="#" target="_self" />
-      <area shape="poly" coords="1219,400,1229,399,1229,520,1350,520,1350,530,1219,531" onclick="javascript:showInfo(35);" href="#" target="_self" />
-      <area shape="poly" coords="1229,429,1240,430,1241,508,1320,510,1320,520,1229,520" onclick="javascript:showInfo(2);" href="#" target="_self" />
-      <area shape="poly" coords="1231,550,1319,550,1320,560,1241,561,1240,649,1229,650" onclick="javascript:showInfo(5);"  href="#" />
-      <area shape="poly" coords="1070,300,1189,300,1190,310,1079,310,1080,450,1070,450" onclick="javascript:showInfo(28);" href="#" target="_self" />
-      <area shape="poly" coords="989,79,999,79,1000,279,1189,280,1189,290,992,291" onclick="javascript:showInfo(24);" href="#" target="_self" />
+      <area shape="poly" coords="584,324,586,343,789,348,791,543,818,540,818,324" onclick="javascript:showInfo(33);" href="#" target="_self" />
+      <area shape="poly" coords="831,310,1016,309,1015,323,845,325,844,523,831,523" onclick="javascript:showInfo(29);" href="#" target="_self" />
+      <area shape="poly" coords="856,329,857,346,1046,344,1047,536,1060,535,1061,329" onclick="javascript:showInfo(1);" href="#" target="_self" />
+      <area shape="poly" coords="951,344,951,359,1033,360,1034,483,1048,483,1045,344" onclick="javascript:showInfo(21);" href="#" target="_self" />
+      <area shape="poly" coords="854,281,853,303,989,302,989,192,967,192,967,279" onclick="javascript:showInfo(37);" href="#" target="_self" />
+      <area shape="poly" coords="1160,771,1182,771,1183,903,1325,902,1324,927,1161,926" onclick="javascript:showInfo(7);" href="#" target="_self" />
+      <area shape="poly" coords="1127,645,1160,646,1161,927,1444,927,1444,953,1126,953" onclick="javascript:showInfo(25);" href="#" target="_self" />
+      <area shape="poly" coords="980,540,1174,539,1174,566,1006,567,1008,748,980,749" onclick="javascript:showInfo(3);" href="#" target="_self" />
+      <area shape="poly" coords="1221,751,1234,751,1234,553,1410,554,1411,539,1220,540" onclick="javascript:showInfo(34);" href="#" target="_self" />
+      <area shape="poly" coords="1221,353,1235,352,1235,516,1406,517,1404,529,1219,531" onclick="javascript:showInfo(35);" href="#" target="_self" />
+      <area shape="poly" coords="1234,384,1267,384,1269,491,1363,491,1364,516,1234,517" onclick="javascript:showInfo(2);" href="#" target="_self" />
+      <area shape="poly" coords="1234,553,1367,553,1367,579,1258,577,1260,698,1234,698" onclick="javascript:showInfo(5);" href="#" target="_self"/>
+      <area shape="poly" coords="1070,311,1235,311,1234,332,1094,335,1095,518,1069,518" onclick="javascript:showInfo(28);" href="#" target="_self" />
+      <area shape="poly" coords="991,19,1020,20,1019,270,1261,272,1261,303,989,303" onclick="javascript:showInfo(24);" href="#" target="_self" />
     </map>
     <map name="Map2-pt" id="Map2-pt">
-      <area shape="rect" coords="500,390,611,401" onclick="javascript:openPanel(3);" href="#" target="_self" />
-      <area shape="poly" coords="680,309,879,310,880,539,869,541,869,319,679,320" onclick="javascript:showInfo(17);" href="#" target="_self" />
-      <area shape="poly" coords="720,320,720,329,860,330,859,480,868,480,869,319" onclick="javascript:showInfo(33);" href="#" target="_self" />
-      <area shape="poly" coords="880,309,1029,309,1030,319,890,320,890,439,879,441" onclick="javascript:showInfo(29);" href="#" target="_self" />
-      <area shape="poly" coords="900,330,1049,330,1050,480,1039,480,1040,339,899,340" onclick="javascript:showInfo(1);" href="#" target="_self" />
-      <area shape="poly" coords="940,339,1038,340,1039,410,1029,410,1030,350,940,350" onclick="javascript:showInfo(21);" href="#" target="_self" />
-      <area shape="poly" coords="1071,300,1220,299,1220,310,1081,310,1081,419,1070,420" onclick="javascript:showInfo(28);" href="#" target="_self" />
-      <area shape="poly" coords="979,540,1129,541,1130,551,989,551,990,679,979,680" onclick="javascript:showInfo(3);" href="#" target="_self" />
-      <area shape="poly" coords="1220,540,1350,541,1350,551,1230,551,1230,660,1219,660" onclick="javascript:showInfo(34);" href="#" target="_self" />
+      <area shape="rect" coords="492,375,639,415" onclick="javascript:openPanel(3);" href="#" target="_self" />
+      <area shape="poly" coords="542,292,831,289,833,639,818,639,818,325,541,325" onclick="javascript:showInfo(17);" href="#" target="_self" />
+      <area shape="poly" coords="596,324,596,352,789,353,788,556,816,556,818,325" onclick="javascript:showInfo(33);" href="#" target="_self" />
+      <area shape="poly" coords="833,310,1032,311,1032,324,843,325,845,501,832,503" onclick="javascript:showInfo(29);" href="#" target="_self" />
+      <area shape="poly" coords="857,331,1061,329,1061,536,1046,536,1046,344,858,345" onclick="javascript:showInfo(1);" href="#" target="_self" />
+      <area shape="poly" coords="900,344,1045,344,1046,450,1009,452,1006,376,901,376" onclick="javascript:showInfo(21);" href="#" target="_self" />
+      <area shape="poly" coords="1069,309,1294,310,1295,332,1115,340,1116,485,1070,484" onclick="javascript:showInfo(28);" href="#" target="_self" />
+      <area shape="poly" coords="973,540,1185,540,1186,570,1017,570,1017,753,973,751" onclick="javascript:showInfo(3);" href="#" target="_self" />
+      <area shape="poly" coords="1209,540,1403,541,1403,555,1235,554,1233,718,1208,717" onclick="javascript:showInfo(34);" href="#" target="_self" />
       <area shape="poly" coords="1230,630,1232,553" href="#" />
-      <area shape="poly" coords="1150,830,1150,929,1239,930,1239,940,1139,939,1140,829" onclick="javascript:showInfo(7);" href="#" target="_self" />
-      <area shape="poly" coords="1149,720,1159,719,1159,919,1359,919,1360,930,1151,930" onclick="javascript:showInfo(25);" href="#" target="_self" />
-      <area shape="poly" coords="1229,550,1231,630,1241,630,1240,560,1319,560,1319,550" onclick="javascript:showInfo(5);" href="#" target="_self" />
-      <area shape="poly" coords="1219,409,1229,409,1230,520,1339,519,1340,530,1219,529" onclick="javascript:showInfo(35);" href="#" target="_self" />
-      <area shape="poly" coords="1229,430,1240,429,1240,509,1309,509,1310,519,1230,519" onclick="javascript:showInfo(2);" href="#" target="_self" />
-      <area shape="poly" coords="980,190,989,189,989,289,909,290,909,281,979,280" onclick="javascript:showInfo(37);" href="#" target="_self" />
-      <area shape="poly" coords="989,90,999,90,1000,280,1199,279,1200,290,989,290" onclick="javascript:showInfo(24);" href="#" target="_self" />
-      <area shape="poly" coords="719,119,809,119,810,130,729,130,729,209,719,209" onclick="javascript:showInfo(9);" href="#" target="_self" />
+      <area shape="poly" coords="1190,759,1190,894,1313,895,1316,926,1160,927,1161,759" onclick="javascript:showInfo(7);" href="#" target="_self" />
+      <area shape="poly" coords="1132,642,1163,641,1160,928,1443,927,1444,951,1129,951" onclick="javascript:showInfo(25);" href="#" target="_self" />
+      <area shape="poly" coords="1235,554,1234,679,1262,676,1262,582,1374,584,1374,554" onclick="javascript:showInfo(5);" href="#" target="_self" />
+      <area shape="poly" coords="1206,358,1235,357,1233,517,1410,515,1410,528,1207,532" onclick="javascript:showInfo(35);" href="#" target="_self" />
+      <area shape="poly" coords="1234,394,1269,393,1265,473,1357,475,1359,515,1233,517" onclick="javascript:showInfo(2);" href="#" target="_self" />
+      <area shape="poly" coords="957,169,990,169,988,305,859,305,862,276,957,276" onclick="javascript:showInfo(37);" href="#" target="_self" />
+      <area shape="poly" coords="991,32,1028,32,1029,271,1289,271,1287,305,991,305" onclick="javascript:showInfo(24);" href="#" target="_self" />
+      <area shape="poly" coords="699,259,744,259,742,159,848,155,848,114,696,117" onclick="javascript:showInfo(9);" href="#" target="_self" />
     </map>
 </div>
 
@@ -294,36 +294,36 @@
     <div id="p3-handle" class="panelHandle" style="z-index: 40;"></div>
     <img id="map-3" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:30" usemap="#Map3-en">
     <map name="Map3-en" id="Map3-en">
-      <area shape="poly" coords="379,360,389,360,389,510,549,510,550,520,379,519" onclick="javascript:showInfo(6);" href="#" target="_self" />
-      <area shape="poly" coords="409,600,409,730,539,730,539,720,419,720,420,600" onclick="javascript:showInfo(12);" href="#" target="_self" />
-      <area shape="poly" coords="679,559,679,570,789,570,789,670,800,669,800,560" onclick="javascript:showInfo(18);" href="#" target="_self" />
-      <area shape="poly" coords="869,539,1080,539,1081,550,880,550,879,760,869,760" onclick="javascript:showInfo(27);" href="#" target="_self" />
-      <area shape="poly" coords="989,700,1099,700,1099,710,999,710,999,810,989,811" onclick="javascript:showInfo(16);" href="#" target="_self" />
-      <area shape="poly" coords="810,800,889,800,890,870,879,870,878,810,809,810" onclick="javascript:showInfo(10);" href="#" target="_self" />
-      <area shape="poly" coords="1229,710,1439,710,1440,720,1240,720,1240,920,1229,920" onclick="javascript:showInfo(30);" href="#" target="_self" />
-      <area shape="poly" coords="1549,710,1680,709,1680,721,1559,720,1560,869,1549,869" onclick="javascript:showInfo(15);" href="#" target="_self" />
-      <area shape="poly" coords="1460,590,1580,589,1579,600,1470,600,1470,729,1459,729" onclick="javascript:showInfo(22);" href="#" target="_self" />
-      <area shape="poly" coords="588,120,850,119,850,389,839,390,838,131,588,129" onclick="javascript:showInfo(32);" href="#" target="_self" />
-      <area shape="poly" coords="910,150,1170,149,1171,160,920,160,920,410,909,410" onclick="javascript:showInfo(31);" href="#" target="_self" />
-      <area shape="poly" coords="1219,400,1229,400,1229,540,1359,540,1360,550,1219,549" onclick="javascript:showInfo(4);" href="#" target="_self" />
-      <area shape="poly" coords="1350,330,1360,329,1360,478,1489,479,1489,490,1349,489" onclick="javascript:showInfo(11);" href="#" target="_self" />
-      <area shape="poly" coords="340,960,479,959,480,820,490,819,489,970,339,970" onclick="javascript:showInfo(13);" href="#" target="_self" />
+      <area shape="poly" coords="343,280,394,280,390,487,603,487,602,524,341,521" onclick="javascript:showInfo(6);" href="#" target="_self" />
+      <area shape="poly" coords="407,547,406,744,602,746,601,708,455,708,453,547" onclick="javascript:showInfo(12);" href="#" target="_self" />
+      <area shape="poly" coords="623,551,621,590,777,590,777,728,812,727,812,551" onclick="javascript:showInfo(18);" href="#" target="_self" />
+      <area shape="poly" coords="868,518,1165,518,1167,562,915,558,913,818,867,821" onclick="javascript:showInfo(27);" href="#" target="_self" />
+      <area shape="poly" coords="995,681,1164,682,1165,728,1036,725,1037,859,995,861" onclick="javascript:showInfo(16);" href="#" target="_self" />
+      <area shape="poly" coords="739,825,868,827,870,936,838,937,834,859,741,857" onclick="javascript:showInfo(10);" href="#" target="_self" />
+      <area shape="poly" coords="1175,681,1469,679,1472,725,1219,723,1218,983,1177,984" onclick="javascript:showInfo(30);" href="#" target="_self" />
+      <area shape="poly" coords="1547,708,1734,706,1736,753,1583,752,1583,941,1545,940" onclick="javascript:showInfo(15);" href="#" target="_self" />
+      <area shape="poly" coords="1483,577,1655,576,1657,617,1515,620,1518,777,1485,777" onclick="javascript:showInfo(22);" href="#" target="_self" />
+      <area shape="poly" coords="479,107,858,107,861,495,824,496,826,143,482,148" onclick="javascript:showInfo(32);" href="#" target="_self" />
+      <area shape="poly" coords="907,145,1273,141,1274,196,959,201,959,511,906,512" onclick="javascript:showInfo(31);" href="#" target="_self" />
+      <area shape="poly" coords="1346,271,1391,271,1390,449,1545,452,1547,504,1347,502" onclick="javascript:showInfo(11);" href="#" target="_self" />
+      <area shape="poly" coords="283,948,457,945,462,771,507,770,507,994,278,997" onclick="javascript:showInfo(13);" href="#" target="_self" />
+      <area shape="poly" coords="1410,587,1412,545,1240,541,1235,353,1202,353,1208,581" onclick="javascript:showInfo(4);" href="#" target="_self" />
     </map>
     <map name="Map3-pt" id="Map3-pt">
-      <area shape="poly" coords="409,579,410,730,559,729,558,720,420,720,419,579" onclick="javascript:showInfo(12);" href="#" target="_self" />
-      <area shape="poly" coords="229,509,379,509,379,350,388,350,389,520,228,520" onclick="javascript:showInfo(6);" href="#" target="_self" />
-      <area shape="poly" coords="689,560,799,559,799,680,790,680,788,569,688,570" onclick="javascript:showInfo(18);" href="#" target="_self" />
-      <area shape="poly" coords="869,539,1090,539,1089,549,879,550,879,749,868,750" onclick="javascript:showInfo(27);" href="#" target="_self" />
-      <area shape="poly" coords="989,599,999,598,1000,698,1099,699,1100,711,989,711" onclick="javascript:showInfo(16);" href="#" target="_self" />
-      <area shape="poly" coords="1220,409,1229,409,1229,539,1359,540,1359,550,1219,549" onclick="javascript:showInfo(4);" href="#" target="_self" />
-      <area shape="poly" coords="1349,349,1359,349,1360,479,1499,479,1500,490,1349,490" onclick="javascript:showInfo(11);" href="#" target="_self" />
-      <area shape="poly" coords="1230,930,1230,720,1450,720,1449,730,1240,730,1240,930" onclick="javascript:showInfo(30);" href="#" target="_self" />
-      <area shape="poly" coords="1331,590,1469,591,1470,711,1460,711,1459,601,1331,601" onclick="javascript:showInfo(22);" href="#" target="_self" />
-      <area shape="poly" coords="910,150,1170,149,1170,160,919,160,920,410,909,410" onclick="javascript:showInfo(31);" href="#" target="_self" />
-      <area shape="poly" coords="579,119,850,119,850,390,839,391,839,130,580,129" onclick="javascript:showInfo(32);" href="#" target="_self" />
-      <area shape="poly" coords="810,800,890,800,890,890,879,890,877,811,809,810" onclick="javascript:showInfo(10);" href="#" target="_self" />
-      <area shape="poly" coords="339,960,478,959,479,820,490,819,490,970,338,971" onclick="javascript:showInfo(13);" href="#" target="_self" />
-      <area shape="poly" coords="1549,590,1560,590,1560,710,1710,710,1710,720,1549,719" onclick="javascript:showInfo(15);" href="#" target="_self" />
+      <area shape="poly" coords="414,523,412,745,638,744,637,703,453,701,456,530" onclick="javascript:showInfo(12);" href="#" target="_self" />
+      <area shape="poly" coords="148,475,343,468,342,279,390,279,390,525,150,526" onclick="javascript:showInfo(6);" href="#" target="_self" />
+      <area shape="poly" coords="636,558,808,560,812,742,775,742,774,598,639,595" onclick="javascript:showInfo(18);" href="#" target="_self" />
+      <area shape="poly" coords="867,518,1175,518,1176,544,903,544,901,809,866,809" onclick="javascript:showInfo(27);" href="#" target="_self" />
+      <area shape="poly" coords="1006,560,1039,563,1040,687,1162,687,1161,722,1005,720" onclick="javascript:showInfo(16);" href="#" target="_self" />
+      <area shape="poly" coords="1217,360,1244,360,1247,535,1419,540,1421,567,1217,566" onclick="javascript:showInfo(4);" href="#" target="_self" />
+      <area shape="poly" coords="1347,302,1381,301,1379,468,1569,471,1568,501,1348,501" onclick="javascript:showInfo(11);" href="#" target="_self" />
+      <area shape="poly" coords="1177,984,1178,679,1481,677,1480,718,1225,736,1214,981" onclick="javascript:showInfo(30);" href="#" target="_self" />
+      <area shape="poly" coords="1307,575,1515,577,1519,753,1483,751,1485,608,1304,611" onclick="javascript:showInfo(22);" href="#" target="_self" />
+      <area shape="poly" coords="904,157,1275,156,1276,194,941,193,938,512,902,512" onclick="javascript:showInfo(31);" href="#" target="_self" />
+      <area shape="poly" coords="472,112,858,108,858,493,816,495,811,165,475,166" onclick="javascript:showInfo(32);" href="#" target="_self" />
+      <area shape="poly" coords="743,822,870,824,875,964,839,969,837,859,742,859" onclick="javascript:showInfo(10);" href="#" target="_self" />
+      <area shape="poly" coords="286,944,453,945,458,769,495,769,495,986,282,988" onclick="javascript:showInfo(13);" href="#" target="_self" />
+      <area shape="poly" coords="1537,539,1586,537,1587,686,1781,686,1782,737,1537,733" onclick="javascript:showInfo(15);" href="#" target="_self" />
     </map>
 
 </div>
