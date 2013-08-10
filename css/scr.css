@@ -56,8 +56,6 @@ body > * {
   background: #000 url(../images/map-2.jpg) 0 0;
   height: 1080px;
   width: 1920px;
-  border-left: 2px solid black;
-
 }
 .panelHandle {
   height: 1080px;
@@ -121,7 +119,7 @@ body > * {
 #mus-txt-content {
     clear: both;
     padding-top: 130px;
-    width: 300px;
+    width: 400px;
     font-size: 12px;
 }
 
