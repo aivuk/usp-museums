@@ -22,9 +22,42 @@
         }
 
         $('#obj-' + lang + '-' + obj_id).css({'display': 'none'});
+        var top_bar_old = $('#top-obj-en-'+ obj_id);
+        if (top_bar_old)
+            top_bar_old.hide();
+
+        top_bar_old = $('#top-obj-pt-'+ obj_id);
+        if (top_bar_old)
+            top_bar_old.hide();
+
+
     }
 
     function showInfo(obj_num) {
+        var selectedObj = info.filter(function (e) {return parseInt(e.n) == obj_num})[0];
+
+        if (selectedObj['grupo'] == "bem") {
+            if (!$("#panel4").hasClass('heritage')) {
+                if ($("#panel4").hasClass('museum'))
+                    $("#panel4").removeClass('museum')
+                $("#panel4").toggleClass('heritage');
+            }
+        } else if (selectedObj['grupo'] == "museu"){
+            if (!$("#panel4").hasClass('museum')) {
+                if ($("#panel4").hasClass('heritage'))
+                    $("#panel4").removeClass('heritage')
+                $("#panel4").toggleClass('museum');
+            }
+        }
+
+        if (selectedObj.grupo == "museu") {
+            $('#museum').show();
+            $('#heritage').hide();
+        } else {
+            $('#museum').hide();
+            $('#heritage').show();
+        }
+
         if (getLeft(4) >= 1920) {
             $('#panel4').animate({'left': '1440px'});
         }
@@ -33,30 +66,86 @@
         if (butOn) {
             butOn.attr('src', butOn.attr('src').replace('_0.png', '_1.png')); 
         }
+
+        var top_bar_old = $('#top-obj-en-'+ obj_info);
+        if (top_bar_old)
+            top_bar_old.hide();
+
+        top_bar_old = $('#top-obj-pt-'+ obj_info);
+        if (top_bar_old)
+            top_bar_old.hide();
+
+        if (lang == 'en') {
+            var top_bar_new = $('#top-obj-en-'+ obj_num);
+            if (top_bar_new)
+                top_bar_new.show();
+        } else {
+            var top_bar_new = $('#top-obj-pt-'+ obj_num);
+            if (top_bar_new)
+                top_bar_new.show();
+        }
+
         $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
-        console.log($('#obj-' + lang + '-' + obj_num));
         $('#obj-' + lang + '-' + obj_num).css({'display': 'inline'});
         obj_info = obj_num;
     }
 
     function openPanel(num) {
         if (num == 1) {
+            turnOffButton(obj_info);
+            $('#museum').hide();
+            $('#heritage').hide();
+
+            $('#state-button-on').show();
+            $('#state-button-off').hide();
+
+            $('#city-button-off').show();
+            $('#city-button-on').hide();
+
+            $('#univ-button-on').hide();
+            $('#univ-button-off').show();
+
             $('#panel1').animate({'left': '0'}, 650);
             $('#panel2').animate({'left': '1920px'}, 650);
             $('#panel3').animate({'left': '1920px'}, 650);
             $('#panel4').animate({'left': '1920px'}, 650);
         } else if (num == 2) {
             turnOffButton(obj_info);
+            $('#museum').hide();
+            $('#heritage').hide();
+
+
+            $('#state-button-on').hide();
+            $('#state-button-off').show();
+
+            $('#city-button-off').hide();
+            $('#city-button-on').show();
+
+            $('#univ-button-on').hide();
+            $('#univ-button-off').show();
+
             obj_info = 0;
-            $('#panel1').animate({'left': '-1900px'}, 650);
-            $('#panel2').animate({'left': '20px'}, 650);
+            $('#panel1').animate({'left': '-1880px'}, 650);
+            $('#panel2').animate({'left': '40px'}, 650);
             $('#panel3').animate({'left': '1920px'}, 650);
             $('#panel4').animate({'left': '1920px'}, 650);
         } else if (num == 3) {
+            $('#state-button-on').hide();
+            $('#state-button-off').show();
+
+            $('#city-button-off').show();
+            $('#city-button-on').hide();
+
+            $('#univ-button-on').show();
+            $('#univ-button-off').hide();
+
             turnOffButton(obj_info);
+            $('#museum').hide();
+            $('#heritage').hide();
+
             obj_info = 0;
-            $('#panel2').animate({'left': '-1900px'}, 650);
-            $('#panel3').animate({'left': '20px'}, 650);
+            $('#panel2').animate({'left': '-1880px'}, 650);
+            $('#panel3').animate({'left': '40px'}, 650);
             $('#panel4').animate({'left': '1920px'}, 650);
         } else if (num == 4) {
             $('#panel2').animate({'left': '480px'}, 650);
@@ -69,13 +158,32 @@
     function changeLanguage(l) {
         if (l != lang) {
             $('.'+ lang).hide();
+
+            var stButtonOff = $('#state-button-off');
+            var stButtonOn = $('#state-button-on');
+            var ctButtonOff = $('#city-button-off');
+            var ctButtonOn = $('#city-button-on');
+            var unButtonOff = $('#univ-button-off');
+            var unButtonOn = $('#univ-button-on');
+
+            stButtonOff.attr({'src': stButtonOff.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+            stButtonOn.attr({'src': stButtonOn.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+
+            ctButtonOff.attr({'src': ctButtonOff.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+            ctButtonOn.attr({'src': ctButtonOn.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+
+            unButtonOff.attr({'src': unButtonOff.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+            unButtonOn.attr({'src': unButtonOn.attr('src').replace(lang, l)}).toggleClass(l + '-pos').toggleClass(lang + '-pos');
+
             $('.'+ l).show();
+
             $('#mus-txt-content > *').hide();
             $("#map-1").attr("usemap", "#Map1-" + l);
             var butOff = $('#button-' + lang + '-' + obj_info);
             if (butOff && obj_info > 0) {
                 $('#button-' + lang + '-' + obj_info).attr('src', butOff.attr('src').replace('_1.png', '_0.png'));
             }
+
             $('#panel4').toggleClass('whiteBorder');
             lang = l;
             if (obj_info > 0)
@@ -86,13 +194,16 @@
 
     var lang = "en";
     var obj_info = 0;
+    var info;
 
     $(function () {
-        //$("#op3").click(function(){openPanel(3);});
-        //$("#op4").click(function(){openPanel(4);});
 
         $("#changLanguageButton-en-Por").click(function(){changeLanguage("pt")});
         $("#changLanguageButton-pt-Eng").click(function(){changeLanguage("en")});
+
+        $('#state-button-off').click(function(){openPanel(1);});
+        $('#city-button-off').click(function(){openPanel(2);});
+        $('#univ-button-off').click(function(){openPanel(3);});
 
         getLeft = function (num) {
             var panelLeft = $("#panel" + String(num)).css("left");
@@ -102,34 +213,42 @@
         }
 
         $("#p1-handle").mousedown(function (data) {
-           openPanel(1);
+           $("body").mousemove(function (data) {
+               var p3Left = getLeft(3);
+               if (data.clientX < p3Left - 40 && data.clientX > 40) {
+                   $("#panel1").css({'right': data.clientX});
+                   $("#panel2").css({'left': data.clientX});
+               }
+           }).mouseup(function () {
+               $("body").off("mousemove");
+           });
         });
 
         $("#p2-handle").mousedown(function (data) {
-           openPanel(2);
-           // $("body").mousemove(function (data) {
-           //     var p3Left = getLeft(3);
-           //     if (data.clientX < p3Left - 30 && data.clientX > 30) {
-           //         $("#panel2").css({'left': data.clientX});
-           //     }
-           // }).mouseup(function () {
-           //     $("body").off("mousemove");
-           // });
+           //openPanel(2);
+           $("body").mousemove(function (data) {
+               var p3Left = getLeft(3);
+               if (data.clientX < p3Left - 40 && data.clientX > 40) {
+                   $("#panel2").css({'left': data.clientX});
+               }
+           }).mouseup(function () {
+               $("body").off("mousemove");
+           });
         });
 
         $("#p3-handle").mousedown(function (data) {
-           openPanel(3);
-           // $("body").mousemove(function (data) {
-           //     var p2Left = getLeft(2);
-           //     var p4Left = getLeft(4);
+           //openPanel(3);
+           $("body").mousemove(function (data) {
+               var p2Left = getLeft(2);
+               var p4Left = getLeft(4);
 
-           //     if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
-           //         $("#panel3").css({'left': data.clientX});
-           //     }
-           // }).mouseup(function () {
-           //     $("body").off("mousemove");
-           // });
-        });//
+               if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
+                   $("#panel3").css({'left': data.clientX});
+               }
+           }).mouseup(function () {
+               $("body").off("mousemove");
+           });
+        });
 
         $('#map-3').click(function (e) { 
                 if (getLeft(4) < 1920) {
@@ -150,7 +269,7 @@
                 });
 
         function createInterface(data) {
-            var info = $.csv.toObjects(data);
+            info = $.csv.toObjects(data);
 
             info.forEach(function (e,i) {
                 var obj_info_en = $("<div/>", {
@@ -166,6 +285,25 @@
                         text: e.text
                         }));
 
+                    var info_list = $('<ul/>');
+
+                    if (e['ADDRESS'] != '')
+                        info_list.append($('<li/>').html('<b>ADDRESS:</b> ' + e['ADDRESS']));
+
+                    if (e['PHONE'] != '')
+                        info_list.append($('<li/>').html('<b>PHONE:</b> ' + e['PHONE']));
+
+                    if (e['OPENING TIMES'] != '')
+                        info_list.append($('<li/>').html('<b>OPENING TIMES:</b> ' + e['OPENING TIMES']));
+
+                    if (e['E-MAIL'] != '')
+                        info_list.append($('<li/>').html('<b>E-MAIL:</b> ' + e['E-MAIL']));
+
+                    if (e['SITE'] != '')
+                        info_list.append($('<li/>').html('<b>SITE:</b> ' + e['SITE']));
+
+                    obj_info_en.append(info_list);
+
 
                 var obj_info_pt = $("<div/>", {
                         class: 'pt',
@@ -180,11 +318,58 @@
                         text: e.texto
                         }));
 
+                    var info_list = $('<ul/>');
+
+                    if (e['ENDEREÇO'] != '')
+                        info_list.append($('<li/>').html('<b>ENDEREÇO:</b> ' + e['ENDEREÇO']));
+
+                    if (e['TELEFONE'] != '')
+                        info_list.append($('<li/>').html('<b>TELEFONE:</b> ' + e['TELEFONE']));
+
+                    if (e['HORÁRIO DE FUNCIONAMENTO'] != '')
+                        info_list.append($('<li/>').html('<b>HORÁRIO DE FUNCIONAMENTO:</b> ' + e['HORÁRIO DE FUNCIONAMENTO']));
+
+                    if (e['E-MAIL'] != '')
+                        info_list.append($('<li/>').html('<b>E-MAIL:</b> ' + e['E-MAIL']));
+
+                    if (e['SITE'] != '')
+                        info_list.append($('<li/>').html('<b>SITE:</b> ' + e['SITE']));
+
+                    obj_info_pt.append(info_list);
+
                 var rot_obj_info_pt = obj_info_pt.clone().attr('id', 'obj-pt-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextPt').toggleClass('pt').toggleClass('en');
                 var rot_obj_info_en = obj_info_en.clone().attr('id', 'obj-en-rot-'+e.n).css({'display': 'block'}).toggleClass('rotTextEn').toggleClass('en').toggleClass('pt');
 
                 obj_info_en.append(rot_obj_info_pt);
                 obj_info_pt.append(rot_obj_info_en);
+
+                if (e['rel'] != '') {
+                    var top_bar = $('<div/>', {'id': 'top-obj-en-'+ e.n, 'class': 'topInfo'}).css('display', 'none');
+                    var relatedObj = info.filter(function (fe) {return fe.n == e['rel']})[0];
+
+                    if (relatedObj['grupo'] == 'bem') {
+                        top_bar.addClass('heritage');
+                    } else if (relatedObj['grupo'] == 'museu') {
+                        top_bar.addClass('museum');
+                    }
+
+                    top_bar.append($('<h1/>').text(relatedObj.name));
+
+                    $("#mus-txt-content").append(top_bar);
+
+                    top_bar = $('<div/>', {'id': 'top-obj-pt-'+ e.n, 'class': 'topInfo'}).css('display', 'none');
+
+                    if (relatedObj['grupo'] == 'bem') {
+                        top_bar.addClass('heritage');
+                    } else if (relatedObj['grupo'] == 'museu') {
+                        top_bar.addClass('museum');
+                    }
+
+                    top_bar.append($('<h1/>').text(relatedObj.nome));
+
+                    $("#mus-txt-content").append(top_bar);
+
+                }
 
                 $("#mus-txt-content").append(obj_info_en);
                 $("#mus-txt-content").append(obj_info_pt);
@@ -215,13 +400,14 @@
             });
 
             $(".pt").hide();
+            $('img').attr({'draggable': 'false'});
         }
    });
 </script>
 </head>
 <body>
 <div id="panel1" class="column">
-    <div id="p1-handle" class="panelHandle" style="z-index: 20;"></div>
+    <div id="p1-handle" class="panelHandle" style="z-index: 0;"></div>
     <img id="map-1" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map1-en">
     <map name="Map1-en" id="Map1-en">
       <area shape="poly" coords="1043,837,1157,840,1155,878,1045,877" onclick="javascript:openPanel(2);" href="#" target="_self" />
@@ -339,8 +525,18 @@
    <img id="changLanguageButton-en-Por" class="ls-pt en" src="images/buttons/interface/en/n40_0.png">
 </div>
 <div id="leftButtons">
-   <img id="museums-en" class="but-museums-en" src="images/buttons/interface/pt/n42_0.png">
-   <img id="heritage-en" class="but-heritage-en" src="images/buttons/interface/pt/n43_0.png">
+   <img id="museum" class="but-museums en-pos" src="images/buttons/interface/en/n42_0.png" style="display: none;">
+   <img id="heritage" class="but-heritage en-pos" src="images/buttons/interface/en/n43_0.png" style="display: none;">
+
+   <img id="state-button-off" class="but-state en-pos" src="images/buttons/interface/en/n44_0.png" style="display: none;">
+   <img id="state-button-on" class="but-state en-pos" src="images/buttons/interface/en/n44_1.png">
+
+   <img id="city-button-off" class="but-city en-pos" src="images/buttons/interface/en/n45_0.png">
+   <img id="city-button-on" class="but-city en-pos" src="images/buttons/interface/en/n45_1.png" style="display: none;">
+
+   <img id="univ-button-off" class="but-univ en-pos" src="images/buttons/interface/en/n46_0.png">
+   <img id="univ-button-on" class="but-univ en-pos" src="images/buttons/interface/en/n46_1.png" style="display: none;">
+
 </div>
 </body>
 </html>
