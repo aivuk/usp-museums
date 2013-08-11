@@ -236,12 +236,17 @@
            });
         }); */
 
+        $('body > *').scroll(function () {
+            window.scrollTo(0,0);
+        });
+
         $("#p2-handle").mousedown(function (data) {
-           //openPanel(2);
            $("body").mousemove(function (data) {
                var p3Left = getLeft(3);
                if (data.clientX < p3Left - 40 && data.clientX > 40) {
                    $("#panel2").css({'left': data.clientX});
+               } else {
+                   window.scrollTo(0,0);
                }
            }).mouseup(function () {
                $("body").off("mousemove");
@@ -256,6 +261,8 @@
 
                if (data.clientX < p4Left - 30 && data.clientX > p2Left + 30) {
                    $("#panel3").css({'left': data.clientX});
+               } else {
+                   window.scrollTo(0,0);
                }
            }).mouseup(function () {
                $("body").off("mousemove");
@@ -363,7 +370,7 @@
                             top_bar.addClass('museum');
                         }
 
-                        top_bar.append($('<h1/>').text(relatedObj.name));
+                        top_bar.append($('<h1/>').text(relatedObj.name.toUpperCase()));
 
                         $("#mus-txt-content").append(top_bar);
 
@@ -375,7 +382,7 @@
                             top_bar.addClass('museum');
                         }
 
-                        top_bar.append($('<h1/>').text(relatedObj.nome));
+                        top_bar.append($('<h1/>').text(relatedObj.nome.toUpperCase()));
 
                         $("#mus-txt-content").append(top_bar);
 

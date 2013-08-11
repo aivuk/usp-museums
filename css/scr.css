@@ -35,11 +35,9 @@ body > * {
 
 #panel3 { 
   background: #000 url(../images/map-3.jpg) 0 0;
-  border-left: 2px solid black;
   height: 1080px;
   width: 1920px;
   left: 1920px;
-  border-left: 1px solid black;
 
 }
 
@@ -70,14 +68,14 @@ body > * {
 .topInfo {
     top: 0;
     left: 0;
-    width: 480px;
+    width: 440px;
     height: 110px;
     position: absolute;
     padding-left: 30px;
 }
 
 .topInfo h1 {
-    width: 480px;
+    width: 440px;
     font-size: 20px;
     font-family: "HelveticaNeueW01-77BdCn";
 }
@@ -95,7 +93,7 @@ body > * {
   padding: 10px 30px; /* RC padding */ 
   height: 1080px;
   width: 480px;
-  border-left: 8px solid black;
+  border-left: 8px solid white;
 }
 
 #panel4.heritage {
@@ -107,7 +105,7 @@ body > * {
 }
 
 #panel4.whiteBorder {
-  border-left: 10px solid white;
+  border-left: 10px solid black;
 }
 
 #panel4 img {
