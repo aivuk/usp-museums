@@ -38,7 +38,7 @@ body > * {
   height: 1080px;
   width: 1920px;
   left: 1920px;
-
+  z-index: 50;
 }
 
 #panel1 {
@@ -68,7 +68,7 @@ body > * {
 .topInfo {
     top: 0;
     left: 0;
-    width: 440px;
+    width: 640px;
     height: 110px;
     position: absolute;
     padding-left: 30px;
@@ -92,8 +92,9 @@ body > * {
   left: 1920px;
   padding: 10px 30px; /* RC padding */ 
   height: 1080px;
-  width: 480px;
+  width: 680px;
   border-left: 8px solid white;
+  z-index: 50;
 }
 
 #panel4.heritage {
@@ -109,15 +110,13 @@ body > * {
 }
 
 #panel4 img {
-    float: right;
     padding-top: 20px;
-    padding-right: 70px;
 }
 
 #mus-txt-content {
     clear: both;
     padding-top: 130px;
-    width: 400px;
+    width: 600px;
     font-size: 12px;
 }
 
@@ -318,3 +317,44 @@ body > * {
     top: 370px;
 }
 
+div.gallery {
+    width: 600px;
+    z-index: 200;
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+}
+
+div.gallery div {
+    width: 100%;
+}
+
+div.gallery > img {
+     left: 0;
+     max-height: 200px;
+}
+
+div.gallery table tr td {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+div.gallery td > img {
+    max-height: 50px;
+}
+
+#zoomImg {
+    width: 1920px;
+    height: 1080px;
+    padding-top: 50px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
+}
+
+#zimg {
+    z-index: 1000;
+}

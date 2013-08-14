@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <title></title>
 <link rel="stylesheet" href="css/scr.css" type="text/css" />
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="./js/jquery.csv-0.71.min.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.csv-0.71.min.js"></script>
 <script type="text/javascript">
     String.prototype.lpad = function(padString, length) {
         var str = this;
@@ -29,6 +28,11 @@
         top_bar_old = $('#top-obj-pt-'+ obj_id);
         if (top_bar_old)
             top_bar_old.hide();
+
+        offGallery = $('.gallery');
+
+        if (offGallery)
+            offGallery.hide();
 
         obj_info = 0;
     }
@@ -58,9 +62,13 @@
             $('#heritage').show();
         }
 
+        var left2 = getLeft(2);
+        var left3 = getLeft(3);
+
         if (getLeft(4) >= 1920) {
-            $('#panel4').animate({'left': '1440px'});
+            $('#panel4').animate({'left': '1240px'});
         }
+
         turnOffButton(obj_info);
         var butOn = $('#button-' + lang + '-' + obj_num);
         if (butOn) {
@@ -85,9 +93,60 @@
                 top_bar_new.show();
         }
 
+        offGallery = $('#gallery-' + obj_info);
+        onGallery = $('#gallery-' + obj_num);
+
+        if (onGallery)
+            onGallery.show();
+        if (offGallery)
+            offGallery.hide();
+
         $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
         $('#obj-' + lang + '-' + obj_num).css({'display': 'inline'});
+
         obj_info = obj_num;
+    }
+
+    function showImage(src) {
+        $('#zimg').attr('src', src);
+        $('#zoomImg').show();
+    }
+
+    function createGallery(obj_id, num_photos) {
+        var k = 1;
+        var gallery = $('<div/>', {'id': 'gallery-' + obj_id, 'class': 'gallery', 'align': 'center'});
+        var openedImg = $('<img/>', {'id': 'g-show' + obj_id, 'src': 'images/photos/' + obj_id + '/1.jpg'});
+        openedImg.click(function () { showImage($(this).attr('src'));});
+        gallery.append(openedImg);
+        var thumbs = $('<table/>', {'id': 'g-thumb' + obj_id});
+
+        var lines = Math.ceil(num_photos/7);
+        var l = $('<tr/>');
+        var imgAdded = 0
+        
+        while (k <= num_photos) {
+            
+            var tb = $('<img/>', {'id': 'thumb' + k, 'src': 'images/photos/' + obj_id + '/t' + k + '.jpg'});
+            l.append($('<td/>').append(tb));
+            changeImg = function (ti) {
+                return function () {
+                    $('#g-show' + obj_id).attr('src', 'images/photos/' + obj_id + '/' + parseInt(ti) + '.jpg');
+                };
+            }
+            tb.click(changeImg(k));
+
+            if (k % 7 == 0 || k == num_photos) {
+                thumbs.append(l);
+                l = $('<tr/>');
+                imgAdded += 7;
+            }
+
+            k = k + 1;
+        }
+
+        gallery.append(thumbs);
+
+        return gallery;
     }
 
     function openPanel(num) {
@@ -111,6 +170,7 @@
             $('#panel4').animate({'left': '1920px'}, 650);
         } else if (num == 2) {
             turnOffButton(obj_info);
+
             $('#museum').hide();
             $('#heritage').hide();
 
@@ -269,15 +329,49 @@
            });
         });
 
-        $('#map-3').click(function (e) { 
+        /*
+        $('#map-1').click(function (e) { 
                 if (getLeft(4) < 1920) {
-                    openPanel(3);
+                    openPanel(1);
                     var butOff = $('#button-' + lang + '-' + obj_info);
                     if (butOff && obj_info > 0) {
                         butOff.attr('src', butOff.attr('src').replace('_1.png', '_0.png')); 
                         $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
                         obj_info = 0;
                     }
+                }
+            });
+        $('#map-2').click(function (e) { 
+                if (getLeft(4) < 1920) {
+                    openPanel(2);
+                    var butOff = $('#button-' + lang + '-' + obj_info);
+                    if (butOff && obj_info > 0) {
+                        butOff.attr('src', butOff.attr('src').replace('_1.png', '_0.png')); 
+                        $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
+                        obj_info = 0;
+                    }
+                }
+            }); */
+
+
+        $('.mapglass').click(function (e) { 
+                if (getLeft(4) < 1920) {
+                    $('#panel4').animate({'left': '1920px'}, 350);
+                    var butOff = $('#button-' + lang + '-' + obj_info);
+                    if (butOff && obj_info > 0) {
+                        butOff.attr('src', butOff.attr('src').replace('_1.png', '_0.png')); 
+                        $('#obj-' + lang + '-' + obj_info).css({'display': 'none'});
+		        var top_bar_old = $('#top-obj-en-'+ obj_info);
+		        if (top_bar_old)
+		            top_bar_old.hide();
+
+		        var top_bar_old = $('#top-obj-pt-'+ obj_info);
+		        if (top_bar_old)
+		            top_bar_old.hide();
+
+                        obj_info = 0;
+                    }
+ 
                 }
             });
 
@@ -390,6 +484,13 @@
 
                     $("#mus-txt-content").append(obj_info_en);
                     $("#mus-txt-content").append(obj_info_pt);
+
+                    if (e.img != '' && parseInt(e.img) > 0) {
+                        var gallery = createGallery(e.n, parseInt(e.img));
+                        gallery.hide();
+                        $("#mus-txt-content").append(gallery);
+                    }
+
                 }
 
                     var x, y;
@@ -419,13 +520,14 @@
 
             $(".pt").hide();
             $('img').attr({'draggable': 'false'});
+            $('#zoomImg').click(function() { $(this).hide(); });
         }
    });
 </script>
 </head>
 <body>
 <div id="panel1" class="column">
-    <img id="map-1" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map1-en">
+    <img id="map-1" class="mapglass" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map1-en">
     <map name="Map1-en" id="Map1-en">
       <area shape="poly" coords="1043,837,1157,840,1155,878,1045,877" onclick="javascript:openPanel(2);" href="#" target="_self" />
       <area shape="poly" coords="704,79,707,263,750,264,751,120,882,121,880,80" onclick="javascript:showInfo(20);" href="#" target="_self" />
@@ -449,8 +551,8 @@
 </div>
 
 <div id="panel2" class="column">
-    <div id="p2-handle" class="panelHandle" style="z-index: 20;"></div>
-    <img id="map-2" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:10" usemap="#Map2-en">
+    <div id="p2-handle" class="panelHandle" style="z-index: 21;"></div>
+    <img id="map-2" class="mapglass" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:20" usemap="#Map2-en">
     <map name="Map2-en" id="Map2-en">
       <area shape="poly" coords="592,118,594,152,739,153,738,19,697,21,696,117" onclick="javascript:showInfo(9);" href="#" target="_self" />
       <area shape="rect" coords="485,377,655,409" onclick="javascript:openPanel(3);" href="#" target="_self" />
@@ -494,8 +596,8 @@
 </div>
 
 <div id="panel3" class="column">
-    <div id="p3-handle" class="panelHandle" style="z-index: 40;"></div>
-    <img id="map-3" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index:30" usemap="#Map3-en">
+    <div id="p3-handle" class="panelHandle" style="z-index: 51;"></div>
+    <img id="map-3" class="mapglass" src="images/glass.png" style="position: absolute; left: 0; top: 0; z-index: 50;" usemap="#Map3-en">
     <map name="Map3-en" id="Map3-en">
       <area shape="poly" coords="343,280,394,280,390,487,603,487,602,524,341,521" onclick="javascript:showInfo(6);" href="#" target="_self" />
       <area shape="poly" coords="407,547,406,744,602,746,601,708,455,708,453,547" onclick="javascript:showInfo(12);" href="#" target="_self" />
@@ -553,7 +655,7 @@
 
    <img id="univ-button-off" class="but-univ en-pos" src="images/buttons/interface/en/n46_0.png">
    <img id="univ-button-on" class="but-univ en-pos" src="images/buttons/interface/en/n46_1.png" style="display: none;">
-
+   <div id="zoomImg" align="center" style="display: none;"><img id="zimg" src=""></div>
 </div>
 </body>
 </html>
